@@ -147,6 +147,12 @@
             background-color: #44546a;
             font-weight: bold;
         }
+        
+        #desmarcar {
+            background-color: #44546a;
+            font-weight: bold;
+        }
+
         #atualizar {
             background-color: #0074D9;
             font-weight: bold;
@@ -222,7 +228,10 @@
 
     <div class="button-container-001">
         <!--<button class="button" id="todos" onclick="checkExpandedAccordionCheckboxes()">Todos</button>          analisar viabilidade/necessidade do botão-->
+        <button class="button" id="desmarcar" onclick="uncheckAll()">Desmarcar</button>
+        
         <button class="button" id="reiniciar" onclick="reloadPage()">Reiniciar</button>
+ 
         <button class="button right" id="resoluções" onclick="redirecionarParaTransparencia()">Resoluções</button>
         <button class="button right" id="agendamento" onclick="uncheckAll()">Agendamento</button>
         <button class="button right" id="sal_min" onclick="uncheckAll()">Piso Salarial</button>
@@ -1190,9 +1199,15 @@ Equipe CAU/SP
             });
         }
         
-        // Função para limpar todos checkbox                                       analisar viabilidade da função      
+        // Função para atualizar página              analisar viabilidade da função      
         function reloadPage() {
-        location.reload(); // Recarrega a página
+            location.reload(); // Recarrega a página
+        }
+
+        // Função para desmarcar todas checkbox              analisar viabilidade da função      
+        function uncheckAll() {
+            const checkboxes = document.querySelectorAll('.checkbox input[type="checkbox"]');
+            checkboxes.forEach(checkbox => (checkbox.checked = false));
         }
 
         function concatenateOptions() {
@@ -1251,6 +1266,7 @@ Equipe CAU/SP
             const resultado = document.getElementById('resultado');
             resultado.innerHTML = ''; 
         }
+        
         function escapeHtml(text) {
             const map = {
                 '&': '&amp;',
