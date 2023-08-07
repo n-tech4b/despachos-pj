@@ -244,7 +244,9 @@
         <button class="button right" id="agendamento" onclick="uncheckAll()">Agendamento</button>
         <button class="button right" id="sal_min" onclick="uncheckAll()">Piso Salarial</button>
         <button class="button right" id="edicao_desp" onclick="redirecionarParaEdicaoDesp()">Despachos</button>
-        <button class="button right" id="relatorio" href="relatorio_1_tri_2023.html" target="_blank">Relatório</button>
+        <button class="button right" id="relatorio" onclick="redirecionarParaRelaorio1tri2023()">Relatório</button>
+
+        <!--<a class="button right" id="relatorio" href="relatorio_1_tri_2023.html" target="_blank">Relatório</a> -->
         <button class="button right" id="siccau" onclick="redirecionarParaSiccau()()">SICCAU</button>
     </div>
     
@@ -1298,6 +1300,11 @@ Equipe CAU/SP
         // Função para redirecionar para o Transparência
         function redirecionarParaTransparencia() {
             window.open('https://transparencia.causp.gov.br/?page_id=110', '_blank');
+        }
+
+        // Função para redirecionar para o Relatório
+        function redirecionarParaRelaorio1tri2023() {
+            window.open('https://n-tech4b.github.io/despachos-pj/relatorio_1_tri_2023', '_blank');
         }
         
 
