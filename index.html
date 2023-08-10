@@ -214,7 +214,9 @@
             width: 100%; /* Definir a largura da linha */
         }
         
-    
+        tram_interna {
+            font: bold;
+        }
         
 
 
@@ -1154,9 +1156,9 @@ Equipe CAU/SP
         </div>
     </div>
 
-<!------------------------------------------- Baixa de Empresa Comum--------------------------------------->
+<!------------------------------------------- Baixa de Registro de Empresa Comum--------------------------------------->
     <div class="accordion">
-        <button class="accordion-button" onclick="toggleAccordion('accordion4')">Baixa de Empresa</button>
+        <button class="accordion-button" onclick="toggleAccordion('accordion4')">Baixa de Registro de Empresa</button>
         <div class="accordion-content" id="accordion4">   
 
 
@@ -1211,7 +1213,7 @@ Equipe CAU/SP
                 data-text=
 "Conforme protocolo XXXXXX e Resolução CAU/BR 193, art.3º
 "
-                >Despacho para incluir no registro baixado.<strong>&nbsp;(Tramitação Interna)</strong>
+                >Despacho para incluir no registro baixado. <p class="tram_interna">&nbsp;(Tramitação Interna)</p>
             </label>
 
             <label class="checkbox">
@@ -1285,9 +1287,9 @@ Atenciosamente."
     </div>       
 
 
-    <!------------------------------------------- Baixa de Empresa de Ofício --------------------------------------->
+    <!------------------------------------------- Baixa de Registro de Empresa de Ofício --------------------------------------->
     <div class="accordion">
-        <button class="accordion-button" onclick="toggleAccordion('accordion5')">Baixa de Empresa de Ofício</button>
+        <button class="accordion-button" onclick="toggleAccordion('accordion5')">Baixa de Registro de Empresa de Ofício</button>
         <div class="accordion-content" id="accordion5">   
 
             <label class="checkbox">
@@ -1356,6 +1358,123 @@ Atenciosamente."
         </div>
     </div>           
             
+    <!------------------------------------------- Interrupção de Registro de Empresa --------------------------------------->
+    <div class="accordion">
+        <button class="accordion-button" onclick="toggleAccordion('accordion6')">Interrupção de Registro de Empresa</button>
+        <div class="accordion-content" id="accordion6">   
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Prezados responsáveis pela empresa XXXXXXXXXXXXXXXXXXXXX,
+" 
+                >Destinatário.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"O profissional xxxxx ainda está vinculado como responsável técnico pela empresa. Para efetuar a sua baixa, é necessário anexar ao protocolo o comprovante de desvinculação do profissional, de acordo com o seu tipo de vínculo:
+- prestador de serviços: anexar o distrato do contrato de prestação de serviços, devidamente assinado por ambas as partes e com firma reconhecida das assinaturas:
+- registro CLT: anexar o termo de homologação de rescisão, devidamente assinado, ou as páginas da CTPS do profissional contendo a identificação, qualificação, registro (com a baixa devidamente lançada) e anotações gerais.
+" 
+                >Caso o responsável técnico ainda esteja ativo (NÃO SÓCIO).
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Ainda constam RRTs emitidos em nome da empresa em aberto. Para prosseguir com a interrupção do registro, é necessário que o profissional XXXXX efetue a baixa dos RRTs xxxxxxxxxxx
+"
+                >Com RRTs em aberto.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Uma vez que o CNPJ da empresa já se encontra baixado, a interrupção temporária de registro não é mais devida, e a empresa deve solicitar a baixa definitiva de seu registro, através do protocolo de baixa de registro.
+
+Para cadastrar o protocolo de baixa, acesse o SICCAU da empresa (usando o CNPJ como login) e na página inicial, clique em Protocolo > Cadastrar Protocolo > Grupo de Assunto: Cadastro de Empresa > Assunto: Baixa de Registro de Empresa e anexe ao protocolo:
+- o distrato social devidamente registrado em órgão competente;
+- a certidão de baixa do CNPJ.
+"
+                >Empresa com CNPJ já baixado.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Conforme protocolo XXXXXX e Resolução CAU/BR 193, art.3º"
+                >Despacho para incluir no registro interrompido. <strong>&nbsp;(Abotação Interna)</strong>
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"O registro desta empresa perante o CAU/SP foi interrompido conforme documento(s) anexado(s).
+
+Favor acessar o SICCAU e emitir a Certidão Negativa de Débitos."
+                >Empresa interrompida SEM DÉBITOS.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"O registro desta empresa perante o CAU/SP foi interrompido conforme documento(s) anexado(s).
+
+Lembramos que a interrupção do registro não exime a empresa dos débitos anteriores, conforme previsto na Resolução CAU/BR Nº 193, Art. 3º.
+
+Favor acessar o SICCAU para regularizar as pendências."
+                >Empresa interrompida COM DÉBITOS.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Ao atender as orientações, por favor, responda o protocolo. Acesse o SICCAU da empresa (usando o CNPJ como login), clique em Protocolo - Pesquisar Protocolo, insira o número do protocolo e clique em “Responder Protocolo”.
+"
+                >Orientação para responder o protocolo.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"PRAZO PARA MANIFESTAÇÃO: 10 DIAS (sob pena de ter o protocolo indeferido e arquivado)."
+                >Prazo para manifestação.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"
+
+Atenciosamente,
+Equipe CAU/SP."
+                >Fechos e identificação do CAU/SP.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Prezados colegas do Setor de inadimplência, encaminho registro interrompido da empresa, conforme data do protocolo de solicitação de interrupção em XXXXXX
+
+Prints anexo, 
+Atenciosamente."
+                >Despacho tramitação INAD interrupção. <strong>&nbsp;(Tramitação Interna)</strong>
+            </label>
+
+
+
+ 
+        </div>
+    </div>    
+
+
+
+
+
+
+
     <!------------------------------------------- Inclusão de Responsável Técnico --------------------------------------->
             
             
@@ -1364,15 +1483,7 @@ Atenciosamente."
 
 
     <div class="accordion">
-        <button class="accordion-button" onclick="toggleAccordion('accordion6')">Inclusão de Responsável Técnico</button>
-        <div class="accordion-content" id="accordion6">   
-
-
-        </div>
-    </div>
-
-    <div class="accordion">
-        <button class="accordion-button" onclick="toggleAccordion('accordion7')">Baixa de Responsável Técnico</button>
+        <button class="accordion-button" onclick="toggleAccordion('accordion7')">Inclusão de Responsável Técnico</button>
         <div class="accordion-content" id="accordion7">   
 
 
@@ -1380,7 +1491,7 @@ Atenciosamente."
     </div>
 
     <div class="accordion">
-        <button class="accordion-button" onclick="toggleAccordion('accordion8')">Despachos Gerais</button>
+        <button class="accordion-button" onclick="toggleAccordion('accordion8')">Baixa de Responsável Técnico</button>
         <div class="accordion-content" id="accordion8">   
 
 
@@ -1388,8 +1499,16 @@ Atenciosamente."
     </div>
 
     <div class="accordion">
-        <button class="accordion-button" onclick="toggleAccordion('accordion9')">Dúvidas e Orientações</button>
+        <button class="accordion-button" onclick="toggleAccordion('accordion9')">Despachos Gerais</button>
         <div class="accordion-content" id="accordion9">   
+
+
+        </div>
+    </div>
+
+    <div class="accordion">
+        <button class="accordion-button" onclick="toggleAccordion('accordion10')">Dúvidas e Orientações</button>
+        <div class="accordion-content" id="accordion10">   
 
 
         </div>
