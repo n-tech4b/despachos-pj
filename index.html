@@ -236,13 +236,14 @@
         <!--<button class="button" id="todos" onclick="checkExpandedAccordionCheckboxes()">Todos</button>          analisar viabilidade/necessidade do botão-->
         <button class="button" id="reiniciar" onclick="reloadPage()">Reiniciar</button>
         
-        <button class="button" id="desmarcar" onclick="uncheckAll()">Desmarcar</button>
+    
+        <button class="button" id="desmarcar" onclick="uncheckExpandedAccordions()">Desmarcar</button>
         
         
  
         <button class="button right" id="resoluções" onclick="redirecionarParaTransparencia()">Resoluções</button>
-        <button class="button right" id="agendamento" onclick="uncheckAll()">Agendamento</button>
-        <button class="button right" id="sal_min" onclick="uncheckAll()">Piso Salarial</button>
+        <button class="button right" id="agendamento" onclick="">Agendamento</button>
+        <button class="button right" id="sal_min" onclick="">Piso Salarial</button>
         <button class="button right" id="edicao_desp" onclick="redirecionarParaEdicaoDesp()">Despachos</button>
         <button class="button right" id="relatorio" onclick="redirecionarParaRelaorio1tri2023()">Relatório</button>
 
@@ -1363,9 +1364,25 @@ Equipe CAU/SP."
         }
 
         // Função para desmarcar todas checkbox              analisar viabilidade da função      
-        function uncheckAll() {
-            const checkboxes = document.querySelectorAll('.checkbox input[type="checkbox"]');
-            checkboxes.forEach(checkbox => (checkbox.checked = false));
+        function uncheckExpandedAccordions() {
+            const accordions = document.querySelectorAll('.accordion');
+            const subCheckboxes = document.querySelectorAll('.sub-checkboxes');
+
+            accordions.forEach(accordion => {
+                const isExpanded = accordion.querySelector('.accordion-content').style.display === 'block';
+                if (isExpanded) {
+                    const checkboxesInAccordion = accordion.querySelectorAll('.checkbox input[type="checkbox"]');
+                    checkboxesInAccordion.forEach(checkbox => (checkbox.checked = false));
+                    const subCheckboxesInAccordion = accordion.querySelector('.sub-checkboxes');
+                    subCheckboxesInAccordion.style.display = 'none';
+                }
+            });
+
+            subCheckboxes.forEach(subCheckbox => {
+                subCheckbox.style.display = 'none';
+                const checkboxes = subCheckbox.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => (checkbox.checked = false));
+            });
         }
 
         function concatenateOptions() {
