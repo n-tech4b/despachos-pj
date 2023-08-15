@@ -1294,9 +1294,185 @@ Atenciosamente."
         <button class="accordion-button" onclick="toggleAccordion('accordion7')">Inclusão de Responsável Técnico</button>
         <div class="accordion-content" id="accordion7">   
 
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Prezados responsáveis pela empresa XXXXXXXXXXXXXXXXXXXXXXXXXX,
+"
+                >Destinatário.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Para efetuar a inclusão de responsável técnico, é necessário anexar ao protocolo o comprovante de vínculo do profissional arquiteto e urbanista junto à empresa, conforme segue:
+
+- sócio: contrato social;
+- empregado (CLT): páginas de identificação, qualificação civil, registro e anotações gerais (com as alterações salariais) da CTPS;
+- prestador de serviços: contrato de prestação de serviços.
+"
+                >Empresa anexou somente o RRT de cargo e função
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"A vigência da responsabilidade técnica anterior do profissional junto à empresa teve fim em XXXXX, e o novo contrato apresentado tem vigência a partir do dia XXXXXXX. Como há um intervalo entre as vigências, o RRT xxxxxxxxx não pode ser utilizado, e o profissional deverá emitir um novo RRT de desempenho de cargo ou função.
+
+Ao preencher o novo RRT, atentar-se para:
+- deixar o campo empresa contratada em branco (caso esse campo apareça);
+- quantidade: carga horária firmada em contrato;
+- data de celebração: data de assinatura do contrato;
+- data de início: data de início firmada em contrato (ou data de assinatura caso não tenha uma data de início determinada);
+- previsão de término: data de fim do contrato;
+- valor contrato/honorários: remuneração firmada em contrato;
+- endereço da obra/serviço: endereço da empresa.
+"
+                >Empresa apresentou o mesmo RRT de cargo e função anterior porém há um intervalo entre as vigências
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"As datas de celebração e início do RRT não estão de acordo com o contrato de prestação de serviços.
+
+Como esses dados não permitem alteração, de acordo com a resolução CAU/BR nº 91, a profissional deverá emitir um novo RRT.
+
+Ao preencher, atentar-se para:
+
+- deixar o campo empresa contratada em branco (caso esse campo apareça);
+- quantidade: carga horária firmada em contrato;
+- data de celebração: data de assinatura do contrato;
+- data de início: data de assinatura do contrato ou data de início firmada em contrato;
+- previsão de término: data de fim do contrato;
+- valor contrato/honorários: remuneração firmada em contrato;
+- endereço da obra/serviço: endereço da empresa.
+"
+                >RRT de cargo ou função com datas divergentes do comprovante de vínculo
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Por determinação do Código Civil (art. 598), o contrato de prestação de serviços pode ter duração máxima de 4 anos. Por favor, alterem a vigência do contrato para período em conformidade com a lei."
+                >Contrato de prestação de serviços com vigência incorreta
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"A remuneração do profissional não atende ao piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente. Assim, o arquiteto que trabalha, por exemplo, 6 h/d deve receber, pelo menos, 6 salários mínimos. A partir da 7ª hora, há um acréscimo de 25% por hora excedente (7h/d = 7,25 salários; 8h/d = 8,5 salários)."
+                >Salário não atende ao piso
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Não consta no contrato de prestação de serviços a carga horária que a profissional exercerá. Esta informação é necessária para a verificação do piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente.
+
+Para a correta verificação do piso, a carga horária exercida deve ser definida em horas/semana."
+                >Não consta a carga horária que será exercida
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" data-text=
+"X) Solicitar que o profissional XXXXXX retifique os seguintes itens no RRT xxxxxxxxxx:" 
+                onclick="toggleSubCheckboxes('accordion7', 'sub-checkboxes-1')"> 
+                Retificações necessárias no RRT
+            </label>
+
+            
+            <div class="sub-checkboxes sub-checkboxes-1" style="display: none;">
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• previsão de término: informar a data de fim da vigência conforme definido em contrato;"
+                    >previsão de término definida
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• previsão de término: deixar em branco;"
+
+                    >Previsão de término indefinida
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• valor de contrato: informar a remuneração determinada conforme comprovante de vínculo apresentado;"
+
+                    >Valor de contrato
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• endereço da obra/serviço: informar o endereço da empresa;
+"
+
+                    >Endereço da obra
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• contratante/CNPJ (na guia &quot;Dados do Contrato&quot;): informar a razão social da empresa e o número do CNPJ correto conforme o cartão CNPJ;
+"
+
+                    >Contratante/CNPJ 
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• quantidade e unidade (na aba &quot;Atividades Contratadas&quot;): informar a carga horária conforme determinado no comprovante de vínculo (em h/dia ou h/sem);
+"
+
+                    >Quantidade/unidade
+                </label>
+
+              
+
+            </div>
+
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Ao atender as orientações, por favor, responda o protocolo. Acesse o SICCAU da empresa (usando o CNPJ como login), clique em Protocolo - Pesquisar Protocolo, insira o número do protocolo e clique em “Responder Protocolo”.
+"
+                
+                >Orientação para responder o protocolo.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"PRAZO PARA MANIFESTAÇÃO: 10 DIAS (sob pena de ter o protocolo indeferido e arquivado)."
+                >Prazo para manifestação.
+            </label>
+
+
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"
+
+Atenciosamente,
+Equipe CAU/SP." 
+                checked
+                >Fechos e identificação do CAU/SP.
+            </label>
+   
+
+
+
+
+
 
         </div>
     </div>
+
+
+
 
     <!------------------------------------------- Baixa de Responsável Técnico --------------------------------------->
             
