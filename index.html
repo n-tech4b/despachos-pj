@@ -249,7 +249,7 @@
         <button class="button right" id="orientações-pj" onclick="">Orientações PJ</button>
         <button class="button right" id="resoluções" onclick="redirecionarParaTransparencia()">Resoluções</button>
         <button class="button right" id="agendamento" onclick="">Agendamento</button>
-        <button class="button right" id="sal_min" onclick="">Piso Salarial</button>
+        <button class="button right" id="sal_min" onclick="redirecionarParaPisoSalarial()">Piso Salarial</button>
         <button class="button right" id="edicao_desp" onclick="redirecionarParaEdicaoDesp()">Despachos</button>
         <button class="button right" id="relatorio" onclick="redirecionarParaRelaorio1tri2023()">Relatório</button>
         
@@ -1982,7 +1982,7 @@ Equipe CAU/SP."
 
 
         // Função para redirecionar para o Transparência
-        function redirecionarParaTransparencia() {
+        function redirecionarParaPisoSalarial() {
             window.open('https://transparencia.causp.gov.br/?page_id=110', '_blank');
         }
 
@@ -1995,6 +1995,11 @@ Equipe CAU/SP."
            // Função para redirecionar para o SICCAU
         function redirecionarParaSiccau() {
             window.open('https://acesso.caubr.gov.br/', '_blank');
+        }
+
+             // Função para redirecionar para o planilha de piso salarial
+             function redirecionarParaSiccau() {
+            window.open('https://conselhoarquitetura.sharepoint.com/:x:/r/sites/CAUSP-DRIVE/_layouts/15/Doc.aspx?sourcedoc=%7BB189AD91-4DE2-4EF5-B83F-47C519CC63B0%7D&file=CALCULO%20SALARIO%20MINIMO.xlsx&action=default&mobileredirect=true', '_blank');
         }
 
 
