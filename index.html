@@ -843,7 +843,7 @@ Atenciosamente,"
             </label>  
 
 
-
+            <!--
             <label class="checkbox">
                 <input type="checkbox" 
                 data-text=
@@ -877,16 +877,93 @@ Para auxílio na emissão do RRT Derivado, acessar: acessar:
                 >Atualização Cadastral Obrigatória
             </label>  
 
+            -->
 
 
+            <label class="checkbox">
+                <input type="checkbox" data-text=
+"Informamos que há uma atualização cadastral obrigatória ainda não atendida pela empresa.
 
-
-
-
-
-
+Para prosseguir com a atualicação cadastral é necessário anexar ao protocolo:
+"
+                onclick="toggleSubCheckboxes('accordion2', 'sub-checkboxes-1')"> 
+                Atualização Cadastral Obrigatória
+            </label>
 
             
+            <div class="sub-checkboxes sub-checkboxes-1" style="display: none;">
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"x) Última alteração consolidada do contrato social e eventuais alterações posteriores. O Contrato Social deverá ser assinado digitalmente com o certificado digital* da empresa ou do responsável legal. O certificado é dispensado em caso de Certidão de Inteiro Teor (que pode ser emitida no site da JUCESP) ou registro para fins de publicidade e eficácia contra terceiros (para os casos de registro em cartório a empresa poderá solicitar esse documento junto ao órgão)."
+                    >Alteração Contratual
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"x) Cartão CNPJ."                 
+                    >CNPJ
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"x) Contrato de prestação de serviços, com reconhecimento de firma da assinatura do arquiteto (poderá ser substituída pelo certificado digital da pessoa física) e assinar o arquivo digitalmente com o certificado digital* da empresa ou do responsável legal."
+                    >CPS
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"x) A CTPS, com exceção da CTPS Digital, deverá ser assinada digitalmente com o certificado digital* da empresa ou do responsável legal.
+No caso da CTPS Digital é necessário anexar um documento de identificação oficial do contratado."
+                    >CTPS
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"x) Registro de Responsabilidade Técnica (RRT) de Desempenho de Cargo ou Função Técnica."
+                    >RRT - emitido e válido
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"Para auxílio na emissão do RRT, acessar:
+&lt;a href=&quot;https://servicos.caubr.gov.br&quot; target=&quot;blank&quot;>https://servicos.caubr.gov.br&lt;/a>
+
+- clicar em &quot;Tutoriais&quot; - RRT Simples de Desempenho de Cargo ou Função Técnica, caso o RRT seja emitido 30 depois a data mencionada como início no RRT o sistema gerará automaticamente, o RRT Extemporâneo, conforme descrito no item 9 da página de tutoriais.
+
+Caso o profissional responsável técnico pela empresa possua o ART de Cargo ou Função do CREA é possível realizar a emissão do RRT Derivado de Desempenho de Cargo ou Função Técnica.
+
+O RRT DERIVADO não possui taxa a ser paga.
+
+Para auxílio na emissão do RRT Derivado, acessar: acessar:
+&lt;a href=&quot;https://servicos.caubr.gov.br&quot; target=&quot;blank&quot;>https://servicos.caubr.gov.br&lt;/a>
+- clicar em RRT Derivado."            
+                    >RRT - já baixado ou inexistente
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"*O Governo Federal oferece o serviço de assinatura digital por meio da conta gov.br. Para mais informações, acesse &lt;a href=&quot;https://www.gov.br/governodigital/pt-br/assinatura-eletronica&quot; target=&quot;blank&quot;>https://www.gov.br/governodigital/pt-br/assinatura-eletronica&lt/a>  
+Caso não seja possível assinar digitalmente, por favor enviem cópias autenticadas dos documentos ao endereço: DEP – Pessoa Jurídica – CAU/SP, Rua Quinze de Novembro, 194 - Centro Histórico de São Paulo, São Paulo - SP, 01013-000.
+OBS: Os atendimentos presenciais devem ser agendados através do e-mail atendimento@causp.org.br quando houver necessidade.
+"                  
+                    checked
+                    >Assinatura do GOV
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"Link da Resolução 48 do CAU/BR, que dispõe sobre atualização cadastral:
+&lt;a href=&quot;https://transparencia.caubr.gov.br/resolucao48/&quot; target=&quot;blank&quot;>https://transparencia.caubr.gov.br/resolucao48/&lt;/a>        
+"          
+                    checked
+                    >Link da R48
+                </label>
+
+            </div>
+
+
+            <!--     fim check expansivo                           -->
 
             <label class="checkbox">
                 <input type="checkbox" 
@@ -1122,6 +1199,64 @@ Lembramos que a baixa do registro não exime a empresa dos débitos anteriores, 
 
 Favor acessar o SICCAU para regularizar as pendências."
                 >Empresa baixada COM DÉBITOS.
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Para a empresa realizar a BAIXA de registro perante o CAU, a empresa deverá se enquadrar nas condições de baixa de registro dispostas no artigo 26 da Resolução 28 do CAU/BR:
+
+&lt;a href=&quot;https://transparencia.caubr.gov.br/resolucao28/&quot; target=&quot;blank&quot;>https://transparencia.caubr.gov.br/resolucao28/&lt;/a>
+
+
+&lt;i>&quot;Art. 26. É obrigatório à pessoa jurídica registrada no CAU/UF solicitar a baixa de seu registro, caso ocorra uma das seguintes situações:  &lt;/i>
+
+&lt;i>I - dissolução da pessoa jurídica, comprovada por meio de distrato social ou outro instrumento oficialmente válido;  &lt;/i> 
+
+&lt;i>II - alteração do instrumento constitutivo da pessoa jurídica excluindo de seus objetivos sociais aqueles relacionados à Arquitetura e Urbanismo; &lt;/i> 
+
+&lt;i>III - ausência de arquiteto e urbanista responsável técnico pela pessoa jurídica. &lt;/i> 
+
+&lt;i>Parágrafo único. Caso a pessoa jurídica tenha as expressões “Arquitetura” ou “Urbanismo”, ou designação similar, na razão social, no nome fantasia ou nos objetivos sociais,a baixa a que se refere o caput deste artigo somente poderá ser efetuada após a retirada das citadas expressões.&quot;&lt;/i>
+
+
+
+A empresa deverá solicitar a baixa de registro realizando abertura de Protocolo no SICCAU(Sistema de Informação e Comunicação do CAU)
+
+
+&lt;u>Para realizar abertura de Protocolo de baixa de registro: &lt;/u>
+
+Acessar:
+&lt;a href=&quot;https://www.causp.gov.br&quot; target=&quot;blank&quot;>https://www.causp.gov.br&lt;/a>
+Clicar em &quot;SICCAU&quot; - no campo &quot;Fazer login&quot; digitar o CNPJ e a senha da empresa. Dentro do ambiente SICCAU da empresa - clicar em &quot;Protocolos&quot; - &quot;Cadastrar Protocolo&quot; - &quot;Cadastro Empresa&quot; - &quot;BAIXA DE REGISTRO DE PESSOA JURÍDICA&quot;
+
+
+No protocolo anexar alteração(ões) contratual(ais) da empresa verificação do objeto social e razão social da empresa.
+
+
+Caso a empresa não se enquadre nas condições de Baixa de Registro de Pessoa Jurídica e não esteja executando atividades de arquitetura e urbanismo, a empresa pode solicitar a INTERRUPÇÃO do registro.
+
+
+&lt;u>Para realizar abertura de Protocolo de interrupção de registro: &lt;/u> 
+
+Acessar:
+&lt;a href=&quot;https://www.causp.gov.br&quot; target=&quot;blank&quot;>https://www.causp.gov.br&lt;/a>
+- clicar em &quot;SICCAU&quot; - no campo &quot;Fazer login&quot; digitar o CNPJ e a senha da empresa. Dentro do ambiente SICCAU da empresa - clicar em &quot;Protocolos&quot; - &quot;Cadastrar Protocolo&quot; - &quot;Cadastro Empresa&quot; - &quot;INTERRUPÇÃO DE REGISTRO DE PESSOA JURÍDICA&quot;
+
+
+
+Informamos que condições de baixa e interrupção de registro de pessoa jurídica estão dispostas no Capitulo VI da Resolução 28 do CAU/BR:
+
+&lt;a href=&quot;https://transparencia.caubr.gov.br/resolucao28/&quot; target=&quot;blank&quot;>https://transparencia.caubr.gov.br/resolucao28/&lt;/a>
+
+
+
+Informações de Interrupção e Baixa de Registro, descritas também nos links abaixo:
+
+&lt;a href=&quot;https://transparencia.causp.gov.br/?page_id=37731&quot; target=&quot;blank&quot;>https://transparencia.causp.gov.br/?page_id=37731&lt;/a>
+&lt;a href=&quot;https://transparencia.causp.gov.br/?page_id=25193&quot; target=&quot;blank&quot;>https://transparencia.causp.gov.br/?page_id=25193&lt;/a>
+"
+                >Condições de baixa de registro 
             </label>
 
             <label class="checkbox">
@@ -1484,6 +1619,31 @@ No contrato de prestação de serviços deve constar o CPF dos assinantes.
 
 Para a correta verificação do piso, a carga horária exercida deve ser definida em horas/semana."
                 >Não consta a carga horária que será exercida
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Páginas de identificação, qualificação civil, registro e alterações salariais (se houver) da CTPS. A CTPS, com exceção da CTPS Digital, deverá ser assinada digitalmente com o certificado digital da empresa ou do responsável legal.
+No caso da CTPS Digital é necessário anexar um documento de identificação oficial do profissional indicado como responsável técnico.
+"
+                >Informação sobre CTPS
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Anexar a ficha de empregado para verificação da carga horária e do piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente.
+"
+                >Informação sobre Ficha de Empregado
+            </label>
+
+            <label class="checkbox">
+                <input type="checkbox" 
+                data-text=
+"Na CTPS deve constar o salário contratual e a remuneração inicial para a verificação do piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente.
+"
+                >Salário não informado na CTPS
             </label>
 
             <label class="checkbox">
