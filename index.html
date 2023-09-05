@@ -1533,12 +1533,9 @@ Atenciosamente."
             <label class="checkbox">
                 <input type="checkbox" 
                 data-text=
-"O profissional XXXXXXX deverá acessar o SICCAU e emitir um RRT de Desempenho de Cargo ou Função Técnica (Atividade 3.7).
-
-Para auxílio na emissão do RRT, acessar:
-&lt;a href=&quot;https://servicos.caubr.gov.br/&quot; target=&quot;blank&quot;>https://servicos.caubr.gov.br/&lt;/a> - clicar em &quot;Tutoriais&quot; - RRT Simples de Desempenho de Cargo ou Função Técnica&quot;, caso o RRT seja emitido 30 depois a data mencionada como início no RRT o sistema gerará automaticamente, o RRT Extemporâneo, conforme descrito no item 9 da página de tutoriais.
+"Para prosseguir com a inclusão/prorroagação de responsabilidade técnica do profissional  xxxx, é necessário:
 "
-                >Emissão de RRT.
+                >Correções necessárias.
             </label>
 
             <label class="checkbox">
@@ -1550,58 +1547,29 @@ Para auxílio na emissão do RRT, acessar:
 - empregado (CLT): páginas de identificação, qualificação civil, registro e anotações gerais (com as alterações salariais) da CTPS;
 - prestador de serviços: contrato de prestação de serviços.
 "
-                >Empresa anexou somente o RRT de cargo e função
+                >Sem comprovante de vínculo.
             </label>
 
             <label class="checkbox">
-                <input type="checkbox" 
-                data-text=
-"A vigência da responsabilidade técnica anterior do profissional junto à empresa teve fim em XXXXX, e o novo contrato apresentado tem vigência a partir do dia XXXXXXX. Como há um intervalo entre as vigências, o RRT xxxxxxxxx não pode ser utilizado, e o profissional deverá emitir um novo RRT de desempenho de cargo ou função.
+                <input type="checkbox" data-text=
+"&lt;u>Referente ao Contrato de Prestação de Serviços:&lt;/u>"
+                onclick="toggleSubCheckboxes('accordion7', 'sub-checkboxes-1')"> 
+                Referente ao CPS.
+            </label>
 
-Ao preencher o novo RRT, atentar-se para:
-- deixar o campo empresa contratada em branco (caso esse campo apareça);
-- quantidade: carga horária firmada em contrato;
-- data de celebração: data de assinatura do contrato;
-- data de início: data de início firmada em contrato (ou data de assinatura caso não tenha uma data de início determinada);
-- previsão de término: data de fim do contrato;
-- valor contrato/honorários: remuneração firmada em contrato;
-- endereço da obra/serviço: endereço da empresa.
+            
+            <div class="sub-checkboxes sub-checkboxes-1" style="display: none;">
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• Por determinação do Código Civil (art. 598), o contrato de prestação de serviços pode ter duração máxima de 4 anos. Por favor, alterem a vigência do contrato para período em conformidade com a lei.
 "
-                >Empresa apresentou o mesmo RRT de cargo e função anterior porém há um intervalo entre as vigências
-            </label>
+                    >Vigência incorreta
+                </label>
 
-            <label class="checkbox">
-                <input type="checkbox" 
-                data-text=
-"As datas de celebração e início do RRT não estão de acordo com o contrato de prestação de serviços.
-
-Como esses dados não permitem alteração, de acordo com a resolução CAU/BR nº 91, a profissional deverá emitir um novo RRT.
-
-Ao preencher, atentar-se para:
-
-- deixar o campo empresa contratada em branco (caso esse campo apareça);
-- quantidade: carga horária firmada em contrato;
-- data de celebração: data de assinatura do contrato;
-- data de início: data de assinatura do contrato ou data de início firmada em contrato;
-- previsão de término: data de fim do contrato;
-- valor contrato/honorários: remuneração firmada em contrato;
-- endereço da obra/serviço: endereço da empresa.
-"
-                >RRT de cargo ou função com datas divergentes do comprovante de vínculo
-            </label>
-
-
-            <label class="checkbox">
-                <input type="checkbox" 
-                data-text=
-"Por determinação do Código Civil (art. 598), o contrato de prestação de serviços pode ter duração máxima de 4 anos. Por favor, alterem a vigência do contrato para período em conformidade com a lei."
-                >Contrato de prestação de serviços com vigência incorreta
-            </label>
-
-            <label class="checkbox">
-                <input type="checkbox" 
-                data-text=
-"O contrato de prestação de serviços deve ser assinado com certificação digital entre as partes (Contratante e Contratado), conforme condições descritas no artigo 3 da Resolução 48 do CAU/BR.
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• O contrato de prestação de serviços deve ser assinado com certificação digital entre as partes (Contratante e Contratado), conforme condições descritas no artigo 3 da Resolução 48 do CAU/BR.
 
 &lt;a href=&quot;https://transparencia.caubr.gov.br/resolucao48/&quot; target=&quot;blank&quot;>https://transparencia.caubr.gov.br/resolucao48/&lt;/a>
 
@@ -1615,118 +1583,192 @@ No caso da impossibilidade de assinatura com certificação digital, por gentile
 
 No contrato de prestação de serviços deve constar o CPF dos assinantes.
 "
-                >Orientação sobre certificado digital no CPS
-            </label>
+                    >Orientação sobre certificado digital
+                </label>
 
-            <label class="checkbox">
-                <input type="checkbox" 
-                data-text=
-"Informamos que não foi possível verificar a validade das assinaturas digitais apresentadas.
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• Informamos que não foi possível verificar a validade das assinaturas digitais apresentadas.
 
 Para seguir com a inclusão de responsabilidade técnica do profissional xxxxx é necessário anexar ao protocolo o contrato de prestação de serviços que deve ser assinado com certificação digital entre as partes (Contratante e Contratado).
 
-Ressaltamos que para que a assinatura digital possa ser verificada é necessário que ao abrir o arquivo seja possível clicar na imagem e conferir as certificações dela, ou que ao inserir o arquivo no site &lt;a href=&quot;https://validar.iti.gov.br&quot; target=&quot;blank&quot;>https://validar.iti.gov.br&lt;/a> apareçam as informações sobre a certificações de ambas as partes.
+Ressaltamos que para que a assinatura digital possa ser verificada é necessário que ao abrir o arquivo seja possível clicar na imagem e conferir as certificações dela, ou que ao inserir o arquivo no site https://validar.iti.gov.br apareçam as informações sobre a certificações de ambas as partes.
 
 No caso da impossibilidade de assinatura com certificação digital, por gentileza reconhecer firma das assinaturas.
 "
-                >Certificado digital impossível de validar
-            </label>
+                    >Certificado digital impossível de validar
+                </label>
 
-            <label class="checkbox">
-                <input type="checkbox" 
-                data-text=
-"A remuneração do profissional não atende ao piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente. Assim, o arquiteto que trabalha, por exemplo, 6 h/d deve receber, pelo menos, 6 salários mínimos. A partir da 7ª hora, há um acréscimo de 25% por hora excedente (7h/d = 7,25 salários; 8h/d = 8,5 salários)."
-                >Salário não atende ao piso
-            </label>
-
-            <label class="checkbox">
-                <input type="checkbox" 
-                data-text=
-"Não consta no contrato de prestação de serviços a carga horária que a profissional exercerá. Esta informação é necessária para a verificação do piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente.
-
-Para a correta verificação do piso, a carga horária exercida deve ser definida em horas/semana."
-                >Não consta a carga horária que será exercida
-            </label>
-
-            <label class="checkbox">
-                <input type="checkbox" 
-                data-text=
-"Páginas de identificação, qualificação civil, registro e alterações salariais (se houver) da CTPS. A CTPS, com exceção da CTPS Digital, deverá ser assinada digitalmente com o certificado digital da empresa ou do responsável legal.
-No caso da CTPS Digital é necessário anexar um documento de identificação oficial do profissional indicado como responsável técnico.
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• A remuneração do profissional não atende ao piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente. Assim, o arquiteto que trabalha, por exemplo, 6 h/d deve receber, pelo menos, 6 salários mínimos. A partir da 7ª hora, há um acréscimo de 25% por hora excedente (7h/d = 7,25 salários; 8h/d = 8,5 salários).
 "
-                >Informação sobre CTPS
-            </label>
+                    >Salário não atende ao piso
+                </label>
 
-            <label class="checkbox">
-                <input type="checkbox" 
-                data-text=
-"Anexar a ficha de empregado para verificação da carga horária e do piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente.
-"
-                >Informação sobre Ficha de Empregado
-            </label>
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• Não consta no contrato de prestação de serviços a carga horária que a profissional exercerá. Esta informação é necessária para a verificação do piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente.
 
-            <label class="checkbox">
-                <input type="checkbox" 
-                data-text=
-"Na CTPS deve constar o salário contratual e a remuneração inicial para a verificação do piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente.
+Para a correta verificação do piso, a carga horária exercida deve ser definida em horas/semana.
 "
-                >Salário não informado na CTPS
-            </label>
+                    >Não consta a carga horária que será exercida
+                </label>
+             
+
+            </div>
 
             <label class="checkbox">
                 <input type="checkbox" data-text=
-"X) Solicitar que o profissional XXXXXX retifique os seguintes itens no RRT xxxxxxxxxx:" 
-                onclick="toggleSubCheckboxes('accordion7', 'sub-checkboxes-1')"> 
-                Retificações necessárias no RRT
+"&lt;u>Referente à Carteira de Trabalho e Previdência Social (CTPS):&lt;/u>"
+                onclick="toggleSubCheckboxes('accordion7', 'sub-checkboxes-2')"> 
+                Referente à CTPS.
             </label>
 
             
-            <div class="sub-checkboxes sub-checkboxes-1" style="display: none;">
+            <div class="sub-checkboxes sub-checkboxes-2" style="display: none;">
 
                 <label class="checkbox">
                     <input type="checkbox" data-text=
-"• previsão de término: informar a data de fim da vigência conforme definido em contrato;"
-                    >Previsão de término definida
+"• Páginas de identificação, qualificação civil, registro e alterações salariais (se houver) da CTPS. A CTPS, com exceção da CTPS Digital, deverá ser assinada digitalmente com o certificado digital da empresa ou do responsável legal.
+No caso da CTPS Digital é necessário anexar um documento de identificação oficial do profissional indicado como responsável técnico.
+"
+                    >Informação sobre CTPS
                 </label>
 
                 <label class="checkbox">
                     <input type="checkbox" data-text=
-"• previsão de término: deixar em branco;"
-
-                    >Previsão de término indefinida
+"• Anexar a ficha de empregado para verificação da carga horária e do piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente.
+"
+                    >Informação sobre Ficha de Empregado
                 </label>
 
                 <label class="checkbox">
                     <input type="checkbox" data-text=
-"• valor de contrato: informar a remuneração determinada conforme comprovante de vínculo apresentado;"
-
-                    >Valor de contrato
+"• Na CTPS deve constar o salário contratual e a remuneração inicial para a verificação do piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente.
+"
+                    >Salário não informado na CTPS
                 </label>
 
-                <label class="checkbox">
-                    <input type="checkbox" data-text=
-"• endereço da obra/serviço: informar o endereço da empresa;"
-
-                    >Endereço da obra
-                </label>
-
-                <label class="checkbox">
-                    <input type="checkbox" data-text=
-"• contratante/CNPJ (na guia &quot;Dados do Contrato&quot;): informar a razão social da empresa e o número do CNPJ correto conforme o cartão CNPJ;"
-
-                    >Contratante/CNPJ 
-                </label>
-
-                <label class="checkbox">
-                    <input type="checkbox" data-text=
-"• quantidade e unidade (na aba &quot;Atividades Contratadas&quot;): informar a carga horária conforme determinado no comprovante de vínculo (em h/dia ou h/sem);"
-
-                    >Quantidade/unidade
-                </label>
-
-              
+                            
 
             </div>
+
+            <label class="checkbox">
+                <input type="checkbox" data-text=
+"&lt;u>Referente ao RRT (Registro de Responsabilidade Técnica):&lt;/u>"
+                onclick="toggleSubCheckboxes('accordion7', 'sub-checkboxes-3')"> 
+                Referente ao RRT.
+            </label>
+
+            
+            <div class="sub-checkboxes sub-checkboxes-3" style="display: none;">
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• O profissional XXXXXXX deverá acessar o SICCAU e emitir um RRT de Desempenho de Cargo ou Função Técnica (Atividade 3.7).
+
+Para auxílio na emissão do RRT, acessar:
+&lt;a href=&quot;https://servicos.caubr.gov.br/&quot; target=&quot;blank&quot;>https://servicos.caubr.gov.br/&lt;/a> - clicar em &QUOT;Tutoriais&QUOT; - &QUOT;RRT Simples de Desempenho de Cargo ou Função Técnica&QUOT;, caso o RRT seja emitido 30 depois a data mencionada como início no RRT o sistema gerará automaticamente, o RRT Extemporâneo, conforme descrito no item 9 da página de tutoriais.
+"
+                    >Emissão de RRT
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• A vigência da responsabilidade técnica anterior do profissional junto à empresa teve fim em XXXXX, e o novo contrato apresentado tem vigência a partir do dia XXXXXXX. Como há um intervalo entre as vigências, o RRT xxxxxxxxx não pode ser utilizado, e o profissional deverá emitir um novo RRT de desempenho de cargo ou função.
+
+Ao preencher o novo RRT, atentar-se para:
+- deixar o campo empresa contratada em branco (caso esse campo apareça);
+- quantidade: carga horária firmada em contrato;
+- data de celebração: data de assinatura do contrato;
+- data de início: data de início firmada em contrato (ou data de assinatura caso não tenha uma data de início determinada);
+- previsão de término: data de fim do contrato;
+- valor contrato/honorários: remuneração firmada em contrato;
+- endereço da obra/serviço: endereço da empresa.
+
+
+Caso deseje, no caso de ser realizado um novo contrato de prestação de serviços ou ser realizado a emissão de um novo RRT, pode enviar para análise antes do pagamento da taxa do RRT, haja vista que o campo &quot;Data de Início&quot; do RRT não pode ser retificado.
+"
+                    >RRT com intervalo entre as vigências
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"As datas de celebração e início do RRT não estão de acordo com o contrato de prestação de serviços.
+
+Como esses dados não permitem alteração, de acordo com a resolução CAU/BR nº 91, a profissional deverá emitir um novo RRT.
+
+Ao preencher, atentar-se para:
+
+- deixar o campo empresa contratada em branco (caso esse campo apareça);
+- quantidade: carga horária firmada em contrato;
+- data de celebração: data de assinatura do contrato;
+- data de início: data de assinatura do contrato ou data de início firmada em contrato;
+- previsão de término: data de fim do contrato;
+- valor contrato/honorários: remuneração firmada em contrato;
+- endereço da obra/serviço: endereço da empresa.
+
+Caso deseje, no caso de ser realizado um novo contrato de prestação de serviços ou ser realizado a emissão de um novo RRT, pode enviar para análise antes do pagamento da taxa do RRT, haja vista que o campo &quot;Data de Início&quot; do RRT não pode ser retificado.
+"
+                    >Datas divergentes entre RRT e comprovante de vínculo
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• Informamos que mais correções poderão ser solicitadas após o envio do RRT. Caso desejem, podem enviar o RRT para análise antes de prosseguir com a assinatura digital/reconhecimento de firma do contrato de prestação de serviços.
+"
+                    >Mais correções podem ser solicitadas
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" data-text=
+"• Na CTPS deve constar o salário contratual e a remuneração inicial para a verificação do piso salarial. Segundo as Resoluções nº 38 e 150 do CAU/BR, a remuneração do profissional deve ser proporcional à carga horária de trabalho, considerando o salário mínimo vigente.
+"
+                    >Retificações necessárias no RRT
+                </label>
+
+
+                <label class="checkbox" style="margin-left: 30px;"> <!-- simular subtópico -->
+                    <input type="checkbox" data-text=
+"   - previsão de término: informar a data de fim da vigência conforme definido em contrato;"
+                    >previsão de término definida
+                </label>
+
+                <label class="checkbox" style="margin-left: 30px;"> <!-- simular subtópico -->
+                    <input type="checkbox" data-text=
+"   - previsão de término: deixar em branco;"
+                    >previsão de término indefinida
+                </label>
+
+                <label class="checkbox" style="margin-left: 30px;"> <!-- simular subtópico -->
+                    <input type="checkbox" data-text=
+"   - valor de contrato: informar a remuneração determinada conforme comprovante de vínculo apresentado;"
+                    >valor de contrato
+                </label>
+
+                <label class="checkbox" style="margin-left: 30px;"> <!-- simular subtópico -->
+                    <input type="checkbox" data-text=
+"   - endereço da obra/serviço: informar o endereço da empresa;"
+                    >endereço da obra
+                </label>
+
+                <label class="checkbox" style="margin-left: 30px;"> <!-- simular subtópico -->
+                    <input type="checkbox" data-text=
+"   - contratante/CNPJ (na guia &quot;Dados do Contrato&quot;): informar a razão social da empresa e o número do CNPJ correto conforme o cartão CNPJ;"
+                    >contratante/CNPJ 
+                </label>
+
+                <label class="checkbox" style="margin-left: 30px;"> <!-- simular subtópico -->
+                    <input type="checkbox" data-text=
+"   - quantidade e unidade (na aba &quot;Atividades Contratadas&quot;): informar a carga horária conforme determinado no comprovante de vínculo (em h/dia ou h/sem);"
+                    >quantidade/unidade
+                </label>
+
+                            
+
+            </div>
+
 
 
             <label class="checkbox">
