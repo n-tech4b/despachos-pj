@@ -45,11 +45,11 @@
       if (carga_horaria > 6) {
         var qtd_salarios_a_receber = 6 + ((carga_horaria - 6) * 1.25);
         var valor_salario_mensal_a_receber = qtd_salarios_a_receber * salario_minimo;
-        resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária diária informada: " + carga_horaria + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_a_receber.toFixed(2) + "<br>Valor do salário mínimo profissional a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2);
+        resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária diária informada: " + carga_horaria + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_a_receber.toFixed(2) + "<br>Valor do salário mínimo profissional mensal a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2) + "<br>Carga horária superior a 6 horas diárias (acrescido 25% para cada hora adicional)";
       } else {
         var qtd_salarios_a_receber = carga_horaria;
         var valor_salario_mensal_a_receber = qtd_salarios_a_receber * salario_minimo;
-        resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária diária informada: " + carga_horaria + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_a_receber.toFixed(2) + "<br>Valor do salário mínimo profissional a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2);
+        resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária diária informada: " + carga_horaria + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_a_receber.toFixed(2) + "<br>Valor do salário mínimo profissional mensal a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2);
       }
     }
 
