@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <title>Piso Salarial!</title>
+
+    <style>
+      .bd-callout {
+      padding: 1.25rem;
+      margin-top: 1.25rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid #eee;
+      border-left-width: .25rem;
+      border-radius: .25rem
+      }
+
+      .bd-callout-info {
+      border-left-color: #5bc0de
+      }
+
+
+    </style>
+
+    <script>
+
+      function calcularPiso() {
+        var salario_minimo = parseFloat(document.getElementById('entrada_salario_minimo').value.replace(',', '.'));
+      var carga_horaria = parseFloat(document.getElementById('entrada_carga_horaria').value.replace(',', '.'));
+  
+        if (isNaN(salario_minimo) || isNaN(carga_horaria)) {
+          alert("Por favor, insira valores numéricos válidos.");
+          return;
+        }
+
+        var resultadoDiv = document.getElementById('resultado');
+
+        if (carga_horaria > 30) {
+          
+          var qtd_salarios_a_receber = (6 + ((carga_horaria -30) * 0.2) * 1.25); // Calcula o piso salarial
+          var valor_salario_mensal_a_receber = qtd_salarios_a_receber * salario_minimo;
+          resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária semanal informado: " + carga_horaria + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_a_receber.toFixed(2) + "<br>Valor do salário mínimo profissional a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2);
+        } else {
+
+          var qtd_salarios_a_receber = (carga_horaria * 0.2); // Calcula o piso salarial
+          var valor_salario_mensal_a_receber = qtd_salarios_a_receber * salario_minimo;
+          resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária semanal informado: " + carga_horaria + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_a_receber.toFixed(2) + "<br>Valor do salário mínimo profissional a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2);
+        }
+
+      }
+
+      function limparCampos() {
+      document.getElementById('entrada_salario_minimo').value = ''; // Limpa o campo do salário mínimo
+      document.getElementById('entrada_carga_horaria').value = ''; // Limpa o campo da carga horária
+      document.getElementById('resultado').innerHTML = ''; // Limpa a área de resultado
+      } 
+
+      </script>
+    
+
+
+
+  </head>
+
+
+  <body>
+
+   
+    
+
+    <div class="container" style="width: 35%;">
+      <br>
+      <h2 style="text-align: center; color: gray">Calculadora de Piso Salarial</h2>
+      <br>
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="file:///C:/Users/jonat/Desktop/projeto-padr%C3%A3o/piso-semanal.html#">Carga Horária Semanal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="file:///C:/Users/jonat/Desktop/projeto-padr%C3%A3o/piso-diario.html#">Carga Horária Diária</a>
+        </li>
+
+
+      </ul>
+
+      <br>
+
+      
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text" id="btnGroupAddon">R$</div>
+        </div>
+        <input type="text" width="50%" class="form-control" id="entrada_salario_minimo" placeholder="Digite o valor do salário mínimo" aria-label="Exemplo de grupo de input" aria-describedby="btnGroupAddon" >
+      </div>
+
+      
+      <br>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text" id="btnGroupAddon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg></div>
+        </div>
+        <input type="text" class="form-control" id="entrada_carga_horaria" placeholder="Digite a carga horária semanal" aria-label="Exemplo de grupo de input" aria-describedby="btnGroupAddon">
+      </div>
+      <br>
+
+
+      <div style="text-align: center;">
+        <button type="button" class="btn btn-outline-success" onclick="calcularPiso()">Calcular</button>
+        <button type="button" class="btn btn-outline-danger" onclick="limparCampos()">Deletar</button>
+      </div>
+
+      </br>
+
+      <div id="resultado"></div>
+    
+    </div>
+        
+    <div class="bd-callout bd-callout-info" style="margin: 30px;">
+      <h4>RESOLUÇÃO N° 150, DE 22 DE SETEMBRO DE 2017</h4>     
+        <br>
+        <p>
+        “Art. 4º O valor do salário mínimo profissional, devido aos arquitetos e urbanistas, será definido de acordo com a jornada de trabalho fixada no contrato de trabalho ou efetivamente trabalhada.
+        <br><br>
+        § 1° Para jornada de trabalho de 6 (seis) horas diárias, o salário mínimo profissional será fixado no valor equivalente a 6 (seis) vezes o salário mínimo nacional.
+        <br><br>
+        § 2° Para jornadas de trabalho superiores a 6 (seis) horas diárias, o salário mínimo profissional será fixado da seguinte forma:
+        <br><br>
+        I – até a sexta hora, na forma do § 1°;
+        <br>
+        II – para as horas que excederem da sexta hora, o valor equivalente a 1 (uma) vez o salário mínimo nacional acrescido de 25% (vinte e cinco por cento) para cada hora, devido proporcionalmente nas frações de hora.
+        <br><br>
+        § 3° Para jornadas de trabalho inferiores a 6 (seis) horas diárias, o salário mínimo profissional será fixado de forma proporcional, respeitado o parâmetro do § 1° deste artigo, inclusive quanto às frações de hora.”
+        </p>
+      </div>
+
+      <div class="bd-callout bd-callout-info" style="margin: 30px;">
+        <h4>Carga Horária Semanal (CHS) fórmula:</h4>     
+        <br>
+        <p>
+        Caso as horas sejam informadas por semana, o salário-mínimo a ser recebido deverá obedecer a fórmula abaixo (elaborada pelo Setor Jurídico):
+        <br><br>
+        CARGA HORÁRIA SEMANAL (CHS) FÓRMULA:
+        <br><br>
+        - Até 30 horas semanais:
+        CHS x 0,2 = SM
+        <br>
+        - Superior a 30 horas semanais:
+        6+[(CHS - 30) x 0,2] x 1,25= SM
+        <br><br>
+        Legenda:
+        <br>
+        CHS: Carga horária semanal
+        <br>
+        SM: Salário Mínimo     
+        </p>
+      </div>
+    
+
+
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+
+    <script>
+      $('#entrada_salario_minimo').mask('000000000000000,00', {reverse: true});
+    </SCript>
+  
+  
+  </body>
+
+
+</html>
