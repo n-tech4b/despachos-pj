@@ -44,7 +44,7 @@
           
           var qtd_salarios_a_receber = (6 + ((carga_horaria -30) * 0.2) * 1.25); // Calcula o piso salarial
           var valor_salario_mensal_a_receber = qtd_salarios_a_receber * salario_minimo;
-          resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária semanal informado: " + carga_horaria + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_a_receber.toFixed(2) + "<br>Valor do salário mínimo profissional mensal a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2)+ "<br>Carga horária superior a 30 horas semanais (acrescido 25% para cada hora adicional)";
+          resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária semanal informado: " + carga_horaria + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_a_receber.toFixed(2) + "<br>Valor do salário mínimo profissional mensal a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2);
         } else {
 
           var qtd_salarios_a_receber = (carga_horaria * 0.2); // Calcula o piso salarial
@@ -116,11 +116,9 @@
 
       </br>
 
-      
+      <div id="resultado"></div>
     
     </div>
-
-    <div class="container" id="resultado"></div>
         
     <div class="bd-callout bd-callout-info" style="margin: 30px;">
       <h4>RESOLUÇÃO N° 150, DE 22 DE SETEMBRO DE 2017</h4>     
