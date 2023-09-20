@@ -125,8 +125,17 @@
         #agendamento {
             background-color: #006f78;
             font-weight: bold;
+    
        
         }
+
+        #piso-semanal{
+            background-color: #006f78;
+            font-weight: bold;
+     
+       
+        }
+
         #resoluções {
             background-color: #006f78;
             font-weight: bold;    
@@ -255,6 +264,9 @@
         <button class="button right" id="orientações-pj" onclick="">Orientações PJ</button>
         <button class="button right" id="resoluções" onclick="redirecionarParaTransparencia()">Resoluções</button>
         <button class="button right" id="agendamento" onclick="">Agendamento</button>
+        <button class="button right" id="piso-semanal" onclick="redirecionarParaPisoSemanal">Calculadora Piso <span>(Em Teste)</span> </button>
+
+        redirecionarParaPisoSemanal
         <button class="button right" id="sal_min" onclick="redirecionarParaPisoSalarial()">Piso Salarial</button>
         <button class="button right" id="relatorio" onclick="redirecionarParaRelaorio1tri2023()">Relatório</button>
         
@@ -2578,6 +2590,11 @@ Equipe CAU/SP."
         // Função para redirecionar para o Relatório
         function redirecionarParaRelaorio1tri2023() {
             window.open('https://n-tech4b.github.io/despachos-pj/relatorio_1_tri_2023', '_blank');
+        }
+
+        // Função para redirecionar para o Relatório
+        function redirecionarParaPisoSemanal() {
+        window.open('https://n-tech4b.github.io/despachos-pj/piso-semanal', '_blank');
         }
 
         // Função para redirecionar para o Relatório
