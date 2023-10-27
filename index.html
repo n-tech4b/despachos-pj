@@ -260,11 +260,11 @@
     
         <button class="button" id="desmarcar" onclick="uncheckExpandedAccordions()">Desmarcar</button>
         
-        
-        <button class="button right" id="orientações-pj" onclick="">Orientações PJ</button>
+        <!--<button class="button right" id="manuais" onclick="redirecionarParaManuais()">Manuais</button> -->
+        <button class="button right" id="orientações-pj" onclick="redirecionarParaOrientacoesPJ()">Orientações PJ</button>
         <button class="button right" id="resoluções" onclick="redirecionarParaTransparencia()">Resoluções</button>
-        <button class="button right" id="agendamento" onclick="">Agendamento</button>
-        <button class="button right" id="piso-semanal" onclick="redirecionarParaPisoSemanal()">Calculadora Piso <span style="color: #cc2e2e;">(Em Teste)</span> </button>
+        <button class="button right" id="agendamento" onclick="redirecionarParaAgendamento">Agendamento</button>
+        <button class="button right" id="piso-semanal" onclick="redirecionarParaPisoSemanal()">Calculadora Piso</button>
 
    
         <button class="button right" id="sal_min" onclick="redirecionarParaPisoSalarial()">Piso Salarial</button>
@@ -2692,6 +2692,16 @@ Equipe CAU/SP."
         // Função para redirecionar edicao do despacho
         function redirecionarParaEdicaoDesp() {
             window.open('https://conselhoarquitetura.sharepoint.com/:x:/r/sites/CAUSP-DRIVE/_layouts/15/Doc.aspx?sourcedoc=%7BA1016DBA-25B5-4B3F-8EC5-3C31AB948F7A%7D&file=DESPACHOS-PJ.xlsx&action=default&mobileredirect=true', '_blank');
+        }
+
+        // Função para redirecionar para agendamentos
+        function redirecionarParaAgendamento() {
+         window.open('https://conselhoarquitetura.sharepoint.com/:x:/r/sites/CAUSP-DRIVE/_layouts/15/Doc.aspx?sourcedoc=%7BE6E0F0BA-FE43-4D91-94BB-59CE1A08F0B0%7D&file=Agendamento%20Presencial%20-%202023.xlsx&action=default&mobileredirect=true', '_blank');
+        }
+
+        // Função para redirecionar manuais
+        function redirecionarParaOrientacoesPJ() {
+         window.open('https://conselhoarquitetura-my.sharepoint.com/personal/nick_silva_causp_gov_br/_layouts/15/onedrive.aspx?id=%2Fsites%2FCAUSP%2DDRIVE%2FDocumentos%20Partilhados%2FGeneral%2FTECNICA%5FPJ%2FPJ%2FMANUAIS&listurl=https%3A%2F%2Fconselhoarquitetura%2Esharepoint%2Ecom%2Fsites%2FCAUSP%2DDRIVE%2FDocumentos%20Partilhados&remoteItem=%7B%22mp%22%3A%7B%22webAbsoluteUrl%22%3A%22https%3A%2F%2Fconselhoarquitetura%2Dmy%2Esharepoint%2Ecom%2Fpersonal%2Fnick%5Fsilva%5Fcausp%5Fgov%5Fbr%22%2C%22listFullUrl%22%3A%22https%3A%2F%2Fconselhoarquitetura%2Dmy%2Esharepoint%2Ecom%2Fpersonal%2Fnick%5Fsilva%5Fcausp%5Fgov%5Fbr%2FDocuments%22%2C%22rootFolder%22%3A%22%2Fpersonal%2Fnick%5Fsilva%5Fcausp%5Fgov%5Fbr%2FDocuments%2FTECNICA%5FPJ%22%7D%2C%22rsi%22%3A%7B%22listFullUrl%22%3A%22https%3A%2F%2Fconselhoarquitetura%2Esharepoint%2Ecom%2Fsites%2FCAUSP%2DDRIVE%2FDocumentos%20Partilhados%22%2C%22rootFolder%22%3A%22%2Fsites%2FCAUSP%2DDRIVE%2FDocumentos%20Partilhados%2FGeneral%2FTECNICA%5FPJ%2FPJ%2FMANUAIS%22%2C%22webAbsoluteUrl%22%3A%22https%3A%2F%2Fconselhoarquitetura%2Esharepoint%2Ecom%2Fsites%2FCAUSP%2DDRIVE%22%7D%7D&view=0&viewid=d0c38d0c%2Dd15f%2D4a3c%2Da01c%2D316762e7a40b', '_blank');
         }
         
         
