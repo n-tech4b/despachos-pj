@@ -61,6 +61,8 @@
 
       var valor_salario_mensal_a_receber = qtd_salarios_a_receber * salario_minimo;
 
+      resultadoDiv.className = 'bd-callout bd-callout-info';
+      
       resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária diária informada: " + carga_horaria_em_horas + " horas" + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_formatado + "<br>Valor do salário mínimo profissional mensal a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2);
 
     }
@@ -69,6 +71,7 @@
       document.getElementById('entrada_salario_minimo').value = ''; // Limpa o campo do salário mínimo
       document.getElementById('entrada_carga_horaria').value = ''; // Limpa o campo da carga horária
       document.getElementById('resultado').innerHTML = ''; // Limpa a área de resultado
+      document.getElementById('resultado').className = ''; // limpa nome da classe
     }
     
   </script>
@@ -127,8 +130,15 @@
       <button type="button" class="btn btn-outline-danger" onclick="limparCampos()">Deletar</button>
       </div>
       </br>
-      <div id="resultado"></div>
+
+      
     
+    </div>
+
+    <div class="container justify-content-center" style="width: 50%;">
+
+      <div id="resultado"></div>
+
     </div>
         
     <div class="bd-callout bd-callout-info" style="margin: 30px;">
