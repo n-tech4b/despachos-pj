@@ -21,7 +21,12 @@
             .bd-callout-info {
             border-left-color: #5bc0de
             }
-    
+
+            .btn-copiado {
+                background-color: #28a745; /* Verde */
+                border-color: #28a745; /* Verde */
+                color: white; /* Texto branco */
+            }
     
         </style>
 
@@ -509,34 +514,43 @@
                         var formattedCnae = formatCnae(cnaeGroup);
                         var atividade = findAtividade(formattedCnae);
                         var cnaeDiv = 
-                                        '<div class="row">' +
-                                            '<div class="col-3" style="min-width: 200px;">' +
-                                                '<div class="input-group mb-3">' +
-                                                    '<input type="text" class="form-control text-center" value="' + formattedCnae + '" >' +
-                                                    '<div class="input-group-append">' +
-                                                        '<button class="btn btn-outline-success btnCopiar" type="button">Copiar</button>' +
-                                                    '</div>' +
-                                                '</div>' +
-                                            '</div>' +
-                                            
-                                            '<div class="col">' +
+                            '<div class="row">' +
+                                '<div class="col-3" style="min-width: 200px;">' +
+                                    '<div class="input-group mb-3">' +
+                                        '<input type="text" class="form-control text-center" value="' + formattedCnae + '" >' +
+                                        '<div class="input-group-append">' +
+                                            '<button class="btn btn-outline-success btnCopiar" type="button">Copiar</button>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                                
+                                '<div class="col">' +
 
-                                                '<input class="form-control" type="text" value="' + atividade + '" placeholder="Insira o CNAE para verificar a atividade..." >' +
+                                    '<input class="form-control" type="text" value="' + atividade + '" placeholder="Insira o CNAE para verificar a atividade..." >' +
 
-                                            '</div>' +
-                                        '</div>';
+                                '</div>' +
+                            '</div>';
 
                         $("#outputCnaes").append(cnaeDiv);
                     }
                 });
 
-                $(document).on("click", ".btnCopiar", function(){
+                $(document).on("click", ".btnCopiar", function () {
                     var cnaeValue = $(this).closest(".input-group").find("input").val();
                     var tempInput = $("<input>");
                     $("body").append(tempInput);
                     tempInput.val(cnaeValue).select();
                     document.execCommand("copy");
                     tempInput.remove();
+
+                    // Feedback visual
+                    var btn = $(this);
+                    btn.text("Copiado!").removeClass("btn-outline-success").addClass("btn-copiado"); // Altera texto e cor
+
+                    // Restaura o botão após 2 segundos
+                    // setTimeout(function () {
+                    //     btn.text("Copiar").removeClass("btn-copiado").addClass("btn-outline-success");
+                    // }, 2000); // 2000 milissegundos = 2 segundos
                 });
 
                 function formatCnae(cnae) {
@@ -551,18 +565,12 @@
                     }
                     return "*** Não encontrado ***";
                 }
-            });
 
-            $("#deletarBtn").click(function(){
-                    
+                $("#deletarBtn").click(function () {
                     $("#outputCnaes").text("");
-
                     $("#inputTextArea").val("");
-
-
-                    inputTextArea
-                
                 });
+            });
 
 
 
