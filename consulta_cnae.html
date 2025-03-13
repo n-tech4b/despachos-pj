@@ -27,6 +27,13 @@
                 border-color: #28a745; /* Verde */
                 color: white; /* Texto branco */
             }
+            
+            .cnae-copiado {
+                background-color: #ced4da67; /* Verde claro */
+                color: #2e7d32; /* Verde escuro */
+                font-weight: bold; /* Texto em negrito */
+                transition: background-color 0.3s, color 0.3s; /* Transição suave */
+            }
     
         </style>
 
@@ -543,13 +550,18 @@
                     document.execCommand("copy");
                     tempInput.remove();
 
-                    // Feedback visual
+                    // Feedback visual no botão
                     var btn = $(this);
-                    btn.text("Copiado!").removeClass("btn-outline-success").addClass("btn-copiado"); // Altera texto e cor
+                    btn.text("Copiado!").removeClass("btn-outline-success").addClass("btn-success"); // Altera texto e cor
 
-                    // Restaura o botão após 2 segundos
+                    // Feedback visual no CNAE
+                    var cnaeInput = $(this).closest(".input-group").find("input");
+                    cnaeInput.addClass("cnae-copiado");
+
+                    // Restaura o botão e o CNAE após 2 segundos
                     // setTimeout(function () {
-                    //     btn.text("Copiar").removeClass("btn-copiado").addClass("btn-outline-success");
+                    //     btn.text("Copiar").removeClass("btn-success").addClass("btn-outline-success");
+                    //     cnaeInput.removeClass("cnae-copiado");
                     // }, 2000); // 2000 milissegundos = 2 segundos
                 });
 
