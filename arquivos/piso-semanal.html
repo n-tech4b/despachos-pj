@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6PY2P4L60K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6PY2P4L60K');
+    </script>
+
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,7 +19,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="icon" href="favicon_calc.ico" type="image/x-icon">
-    <title>Salário Mínimo Profissional</title>
+    <title>Piso Salarial</title>
 
     <style>
       .bd-callout {
@@ -22,111 +33,61 @@
 
       .bd-callout-info {
       border-left-color: #5bc0de
-      
       }
 
       .bd-callout-danger {
       border-left-color: #c41e2f
       }
 
-      /* Esconde o ícone de relógio no input de hora (funciona no Chrome, Edge, Safari) */
-      /* input[type="time"]::-webkit-calendar-picker-indicator {
-        display: none;
-      } */
-
 
     </style>
 
     <script>
+
+
       function calcularPiso() {
-        // Função auxiliar para exibir mensagens no modal
-        function mostrarErro(mensagem) {
-          document.getElementById('corpoModalAlerta').innerHTML = mensagem;
-          $('#modalAlertas').modal('show');
-        }
+        var salario_minimo = parseFloat(document.getElementById('entrada_salario_minimo').value.replace(',', '.'));
 
-        var valor_digitado = document.getElementById('entrada_salario_minimo').value;
+        // Carga horária no formato "hh:mm" e dividida em horas e minutos
         var carga_horaria_em_horas = document.getElementById('entrada_carga_horaria').value;
-
-        // 1. Validação: Os dois campos vazios
-        if (valor_digitado === "" && carga_horaria_em_horas === "") {
-          mostrarErro('<p>É necessário preencher o <strong>Salário Mínimo</strong> e a <strong>Carga Horária</strong> para realizar o cálculo.</p>');
-          return;
-        }
-
-        // 2. Validação: Apenas salário vazio
-        if (valor_digitado === "") {
-          mostrarErro('<p>O campo <strong>Salário Mínimo</strong> está vazio.</p><p>Por favor, informe o valor base (Ex: R$ "<strong><i>1.212,00</i></strong>").</p>');
-          return;
-        }
-
-        // 3. Validação: Apenas carga horária vazia
-        if (carga_horaria_em_horas === "") {
-          mostrarErro('<p>O campo <strong>Carga Horária</strong> está vazio.</p><p>Por favor, informe a jornada semanal exercida (Ex: "<strong><i>30:00</i></strong>" horas).</p>');
-          return;
-        }
-
-        // 4. Validação: Formato da hora inválido (minutos passando de 59)
-        var regexDuracao = /^\d{1,2}:[0-5][0-9]$/;
-        if (!regexDuracao.test(carga_horaria_em_horas)) {
-          mostrarErro('<p>A carga horária informada é <strong>inválida</strong>.</p><p>O formato correto é "hh:mm" (horas e minutos); Ex: "<strong><i>30:00</i></strong>" horas</p>');
-          return;
-        }
-
-        // --- SE PASSOU POR TODAS AS VALIDAÇÕES, FAZ A CONTA --- //
-
-        var salario_minimo = parseFloat(valor_digitado.replace(/\./g, '').replace(',', '.'));
-
         var partes_carga_horaria = carga_horaria_em_horas.split(':');
         var horas = parseInt(partes_carga_horaria[0]);
         var minutos = parseInt(partes_carga_horaria[1]);
-        var carga_horaria = horas + minutos / 60;
-
-        if (carga_horaria > 30) {
-          var qtd_salarios_a_receber = (6 + ((carga_horaria - 30) * 0.2) * 1.25);
-        } else {
-          var qtd_salarios_a_receber = (carga_horaria * 0.2); 
+        var carga_horaria = horas + minutos / 60; // Converta para horas
+        
+  
+        if (isNaN(salario_minimo) || isNaN(carga_horaria)) {
+          alert("Por favor, insira valores numéricos válidos.\n\n - Salário mínimo (Exemplo: R$ 1320,00)\n - Carga horária (formato hh:mm exemplo: 30:00 semanais)\n");
+          return;
         }
 
-        var qtd_salarios_formatado = qtd_salarios_a_receber % 1 === 0 ? qtd_salarios_a_receber.toFixed(0) : qtd_salarios_a_receber.toFixed(2);
-        var valor_salario_mensal_a_receber = qtd_salarios_a_receber * salario_minimo;
         var resultadoDiv = document.getElementById('resultado');
-        
+
+        if (carga_horaria > 30) {
+          
+          var qtd_salarios_a_receber = (6 + ((carga_horaria -30) * 0.2) * 1.25); // Calcula o piso salarial
+        } else {
+
+          var qtd_salarios_a_receber = (carga_horaria * 0.2); // Calcula o piso salarial
+        }
+
+        // toFixed condicionalmente para exibir casas decimais apenas quando necessário
+        var qtd_salarios_formatado = qtd_salarios_a_receber % 1 === 0 ? qtd_salarios_a_receber.toFixed(0) : qtd_salarios_a_receber.toFixed(2);
+
+        var valor_salario_mensal_a_receber = qtd_salarios_a_receber * salario_minimo;
+
         resultadoDiv.className = 'bd-callout bd-callout-info';
 
-        var formatarMoeda = function(valor) {
-          return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        };
+        resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária semanal informada: " + carga_horaria_em_horas + " horas" + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_formatado + "<br>Valor do salário mínimo profissional mensal a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2);
 
-        resultadoDiv.innerHTML = `
-          <h5 class="mb-4 text-center text-secondary">Resumo do Cálculo</h5>
-          <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
-            <span class="text-muted">Salário mínimo informado:</span>
-            <strong class="text-dark">${formatarMoeda(salario_minimo)}</strong>
-          </div>
-          <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
-            <span class="text-muted">Carga horária semanal informada:</span>
-            <strong class="text-dark">${carga_horaria_em_horas} horas</strong>
-          </div>
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <span class="text-muted">Quantidade de salário mínimo a receber:</span>
-            <strong class="text-dark">${qtd_salarios_formatado}</strong>
-          </div>
-          <div class="alert alert-success text-center mb-0" style="background-color: #d4edda; border-color: #c3e6cb;">
-            <span class="d-block mb-1 text-success" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">
-              Salário mínimo profissional mensal
-            </span>
-            <h3 class="mb-0 text-success">
-              ${formatarMoeda(valor_salario_mensal_a_receber)}
-            </h3>
-          </div>
-        `;
       }
 
       function limparCampos() {
-        // Recarrega a página atual, resetando todos os campos e o visual
-        window.location.reload();
-      }
+      document.getElementById('entrada_salario_minimo').value = ''; // Limpa o campo do salário mínimo
+      document.getElementById('entrada_carga_horaria').value = ''; // Limpa o campo da carga horária
+      document.getElementById('resultado').innerHTML = ''; // Limpa a área de resultado
+      document.getElementById('resultado').className = ''; // limpa nome da classe
+      } 
 
       </script>
     
@@ -136,74 +97,69 @@
   </head>
 
 
-  <body style="min-width: 380px;">
-
-    <div class="modal fade" id="modalAlertas" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-warning text-dark">
-            <h5 class="modal-title" id="tituloModalAlerta">Aviso</h5>
-            <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body text-dark" id="corpoModalAlerta">
-            </div>
-          <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Entendi</button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <body>
 
    
-    <div class="container mt-5" style="max-width: 400px;">
-      
-      <h2 class="text-center text-secondary mb-4">Calculadora de Salário Mínimo Profissional</h2>
-      
-      <ul class="nav nav-pills nav-fill mb-4">
+    
+
+    <div class="container" style="width: 80%; max-width: 380px;">
+
+      <br>
+      <br>
+      <h2 style="text-align: center; color: gray">Calculadora de Piso Salarial</h2>
+      <br>
+      <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="piso-semanal.html">Carga Horária Semanal</a>
+          <a class="nav-link active" aria-current="page" href="https://n-tech4b.github.io/despachos-pj/piso-semanal">Carga Horária Semanal</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="piso-diario.html">Carga Horária Diária</a>
+          <a class="nav-link" aria-current="page" href="https://n-tech4b.github.io/despachos-pj/piso-diario">Carga Horária Diária</a>
         </li>
+
+
       </ul>
 
-      <div class="input-group mb-3">
+      <br>
+
+      
+      <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text bg-light">R$</span>
+          <div class="input-group-text" id="btnGroupAddon">R$</div>
         </div>
-        <input type="text" class="form-control" id="entrada_salario_minimo" placeholder="Digite o valor do salário mínimo*" aria-label="Salário mínimo">
+        <input type="text" width="50%" class="form-control" id="entrada_salario_minimo" placeholder="Digite o valor do salário mínimo*" aria-label="Exemplo de grupo de input" aria-describedby="btnGroupAddon" >
       </div>
 
-      <div class="input-group mb-4">
+      
+      <br>
+      <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text bg-light">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-              <path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/>
-            </svg>
-          </span>
+          <div class="input-group-text" id="btnGroupAddon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg></div>
         </div>
-        <input type="text" class="form-control" id="entrada_carga_horaria" placeholder="Digite a carga horária semanal (hh:mm)" aria-label="Carga horária">
+        <input type="text" class="form-control" id="entrada_carga_horaria" placeholder="Digite a carga horária semanal (hh:mm)" aria-label="Exemplo de grupo de input" aria-describedby="btnGroupAddon">
+      </div>
+      <br>
+
+
+      <div style="text-align: center;">
+        <button type="button" class="btn btn-outline-success" onclick="calcularPiso()">Calcular</button>
+        <button type="button" class="btn btn-outline-danger" onclick="limparCampos()">Deletar</button>
       </div>
 
-      <div class="d-flex justify-content-center mb-5">
-        <button type="button" class="btn btn-outline-success mr-2 px-4" onclick="calcularPiso()">Calcular</button>
-        <button type="button" class="btn btn-outline-danger px-4" onclick="limparCampos()">Limpar</button>
-      </div>
+      </br>
 
+
+    
     </div>
 
-    <div class="container d-flex justify-content-center">
-      <div class="col-12 col-md-6">
-        <div id="resultado"></div>
-      </div>
+    <div class="container justify-content-center" style="width: 50%;">
+
+      <div id="resultado"></div>
+
     </div>
 
     <div class="bd-callout bd-callout-danger" role="alert" style="margin: 30px;">
 
-      * O Salário Mínimo Profissional é calculado com base no salário mínimo vigente** no país, na data de início da vigência do vínculo.
+      * O piso salarial é calculado com base no salário mínimo vigente** no país, na data de início da vigência do vínculo.
       Cada hora da jornada diária de trabalho equivale a 1 (um) salário mínimo ao mês. Para jornadas diárias acima de 6
       horas, é acrescido 25% do valor do salário mínimo para cada hora excedente.
 
@@ -218,12 +174,13 @@
     </div>
 
     <div class="bd-callout bd-callout-info" style="margin: 30px;">
-      <h4 class="mb-3">Série Histórica do Salário Mínimo Nacional:</h4>
       <div class="table-responsive">
         <table class="table table-hover">
           
 
           <thead>
+            <h4>Série Histórica do Salário Mínimo Nacional:</h4>  
+            <br>   
             <tr>
               <th scope="col">Ano</th>
               <th scope="col">Vigência</th>
@@ -413,10 +370,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 
     <script>
-      $('#entrada_salario_minimo').mask('#.##0,00', {reverse: true});
+      $('#entrada_salario_minimo').mask('000000000000000,00', {reverse: true});
       $('#entrada_carga_horaria').mask('00:00');
       //$('.placeholder').mask("00/00/0000", {placeholder: "__/__/____"});
-    </script>
+    </SCript>
   
   
   </body>
