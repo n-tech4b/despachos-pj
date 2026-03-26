@@ -121,7 +121,7 @@
 
             <div id="tabelaReferenciaContainer" class="mt-3">
                 <div class="bd-callout bd-callout-info" style="margin: 0 30px 30px 30px;"> 
-                    <h4 class="mt-2 mb-4">Tabela de Atividades Econômicas Relacionadas à Arquitetura e Urbanismo:</h4>  
+                    <h4 style="color: black !important;" class="mt-2 mb-4" >Tabela de Atividades Econômicas Relacionadas à Arquitetura e Urbanismo:</h4>  
                     <table class="table table-sm table-hover">
                         <thead>
                         <tr>
@@ -764,7 +764,7 @@
                         }
 
                         if (atividadesNaoEncontradasHTML.length > 0) {
-                            $("#outputCnaes").append('<h4 class="mt-4">Atividades Econômicas NÃO Relacionadas à Arquitetura e Urbanismo:</h4>');
+                            $("#outputCnaes").append('<h4 class="mt-4" style="color: black !important;">Atividades Econômicas NÃO Relacionadas à Arquitetura e Urbanismo:</h4>');
                             atividadesNaoEncontradasHTML.forEach(function(divHtml) {
                                 $("#outputCnaes").append(divHtml);
                             });
