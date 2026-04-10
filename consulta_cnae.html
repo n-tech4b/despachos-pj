@@ -13,6 +13,7 @@
         gtag('config', 'G-6PY2P4L60K');
         </script>
 
+        <meta name="robots" content="noindex, nofollow">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -672,10 +673,10 @@
                             try {
                                 const errorData = await response.json();
                                 errorMessage = errorData.message || errorMessage;
-                                if (response.status === 404) errorMessage = "CNPJ não encontrado ou inválido.";
+                                if (response.status === 404) errorMessage = "CNPJ não encontrado, inválido ou erro de busca. <a href='' target='_blank'>Clique aqui</a> para acessar a pesquisa manual (versão antiga).";
                                 if (response.status === 429) errorMessage = "Muitas requisições. Por favor, aguarde um momento e tente novamente.";
                             } catch (e) { /* Não conseguiu parsear o JSON de erro */ }
-                            $("#outputCnaes").html(`<p class="text-danger">${errorMessage}</p><p class="text-warning small">Observação: Se o problema persistir, pode ser uma limitação temporária da API ou uma restrição de CORS.</p>`);
+                            $("#outputCnaes").html(`<p class="text-danger">${errorMessage}</p><p class="text-warning small">Observação: Se o problema persistir, pode ser uma limitação temporária da API.</p>`);
                             return;
                         }
 
