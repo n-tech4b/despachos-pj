@@ -190,7 +190,7 @@
         <input type="text" class="form-control" id="entrada_salario_minimo" placeholder="Digite o valor do salário mínimo*" aria-label="Salário mínimo">
       </div>
 
-      <div class="input-group mb-4">
+      <div class="input-group mb-2">
         <div class="input-group-prepend">
           <span class="input-group-text bg-light">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -201,7 +201,18 @@
         <input type="text" class="form-control" id="entrada_carga_horaria" placeholder="Digite a carga horária diária (hh:mm)" aria-label="Carga horária">
       </div>
 
-      <div class="d-flex justify-content-center mb-5">
+
+
+      <div class="d-flex justify-content-center mb-0">
+        <div class="form-text text-muted font-italic">Para o cálculo do piso salarial, será considerada a divisão da carga horária semanal em 5 dias úteis, aplicando-se os acréscimos legais.</div>
+      </div>
+
+      <div class="d-flex justify-content-center mb-3">
+        <div class="form-text text-muted font-italic">Utilizar o cálculo diário apenas para escala semanal 5x2. Outras jornadas, utilizar o cálculo semanal.</div>
+      </div>
+
+
+      <div class="d-flex justify-content-center mb-3">
         <button type="button" class="btn btn-outline-success mr-2 px-4" onclick="calcularPiso()">Calcular</button>
         <button type="button" class="btn btn-outline-danger px-4" onclick="limparCampos()">Limpar</button>
       </div>
@@ -230,6 +241,53 @@
       conforme decisão do Supremo Tribunal Federal no julgamento conjunto das ADPFs 53, 149 e 171).
 
     </div>
+
+        <div class="bd-callout bd-callout-info" style="margin: 30px;">
+      <h4>RESOLUÇÃO N° 150, DE 22 DE SETEMBRO DE 2017</h4>
+      <br>
+      <p>
+        “Art. 4º O valor do salário mínimo profissional, devido aos arquitetos e urbanistas, será definido de acordo com a
+        jornada de trabalho fixada no contrato de trabalho ou efetivamente trabalhada.
+        <br><br>
+        § 1° Para jornada de trabalho de 6 (seis) horas diárias, o salário mínimo profissional será fixado no valor
+        equivalente a 6 (seis) vezes o salário mínimo nacional.
+        <br><br>
+        § 2° Para jornadas de trabalho superiores a 6 (seis) horas diárias, o salário mínimo profissional será fixado da
+        seguinte forma:
+        <br><br>
+        I – até a sexta hora, na forma do § 1°;
+        <br>
+        II – para as horas que excederem da sexta hora, o valor equivalente a 1 (uma) vez o salário mínimo nacional
+        acrescido de 25% (vinte e cinco por cento) para cada hora, devido proporcionalmente nas frações de hora.
+        <br><br>
+        § 3° Para jornadas de trabalho inferiores a 6 (seis) horas diárias, o salário mínimo profissional será fixado de
+        forma proporcional, respeitado o parâmetro do § 1° deste artigo, inclusive quanto às frações de hora.”
+      </p>
+    </div>
+
+    <div class="bd-callout bd-callout-info" style="margin: 30px;">
+      <h4>Carga Horária Semanal (CHS) fórmula:</h4>
+      <br>
+      <p>
+        Caso as horas sejam informadas por semana, o salário-mínimo a ser recebido deverá obedecer a fórmula abaixo
+        (elaborada pelo Setor Jurídico):
+        <br><br>
+        CARGA HORÁRIA SEMANAL (CHS) FÓRMULA:
+        <br><br>
+        - Até 30 horas semanais:
+        CHS x 0,2 = SM
+        <br>
+        - Superior a 30 horas semanais:
+        6+[(CHS - 30) x 0,2] x 1,25= SM
+        <br><br>
+        Legenda:
+        <br>
+        CHS: Carga horária semanal
+        <br>
+        SM: Salário Mínimo
+      </p>
+    </div>
+
 
     <div class="bd-callout bd-callout-info" style="margin: 30px;">
       <h4 class="mb-3">Série Histórica do Salário Mínimo Nacional:</h4>
@@ -400,51 +458,6 @@
       </div>   
     </div>
 
-    <div class="bd-callout bd-callout-info" style="margin: 30px;">
-      <h4>RESOLUÇÃO N° 150, DE 22 DE SETEMBRO DE 2017</h4>
-      <br>
-      <p>
-        “Art. 4º O valor do salário mínimo profissional, devido aos arquitetos e urbanistas, será definido de acordo com a
-        jornada de trabalho fixada no contrato de trabalho ou efetivamente trabalhada.
-        <br><br>
-        § 1° Para jornada de trabalho de 6 (seis) horas diárias, o salário mínimo profissional será fixado no valor
-        equivalente a 6 (seis) vezes o salário mínimo nacional.
-        <br><br>
-        § 2° Para jornadas de trabalho superiores a 6 (seis) horas diárias, o salário mínimo profissional será fixado da
-        seguinte forma:
-        <br><br>
-        I – até a sexta hora, na forma do § 1°;
-        <br>
-        II – para as horas que excederem da sexta hora, o valor equivalente a 1 (uma) vez o salário mínimo nacional
-        acrescido de 25% (vinte e cinco por cento) para cada hora, devido proporcionalmente nas frações de hora.
-        <br><br>
-        § 3° Para jornadas de trabalho inferiores a 6 (seis) horas diárias, o salário mínimo profissional será fixado de
-        forma proporcional, respeitado o parâmetro do § 1° deste artigo, inclusive quanto às frações de hora.”
-      </p>
-    </div>
-
-    <div class="bd-callout bd-callout-info" style="margin: 30px;">
-      <h4>Carga Horária Semanal (CHS) fórmula:</h4>
-      <br>
-      <p>
-        Caso as horas sejam informadas por semana, o salário-mínimo a ser recebido deverá obedecer a fórmula abaixo
-        (elaborada pelo Setor Jurídico):
-        <br><br>
-        CARGA HORÁRIA SEMANAL (CHS) FÓRMULA:
-        <br><br>
-        - Até 30 horas semanais:
-        CHS x 0,2 = SM
-        <br>
-        - Superior a 30 horas semanais:
-        6+[(CHS - 30) x 0,2] x 1,25= SM
-        <br><br>
-        Legenda:
-        <br>
-        CHS: Carga horária semanal
-        <br>
-        SM: Salário Mínimo
-      </p>
-    </div>
 
 
 
