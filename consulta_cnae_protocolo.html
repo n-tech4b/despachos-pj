@@ -68,6 +68,14 @@
             #tabelaReferenciaContainer { display: none; }
             #toggleTabelaReferenciaBtn { background-color: #6c757d; border-color: #6c757d; margin-bottom: 15px; }
             #toggleTabelaReferenciaBtn:hover { background-color: #5a6268; border-color: #545b62; }
+
+            #inputCnaesCadastrados::placeholder {
+                font-size: 0.9rem;
+            }
+
+            #inputCnpj::placeholder {
+                font-size: 0.9rem;
+            }
         </style>
     </head>
     
@@ -100,7 +108,7 @@
                 <div class="col-md-7">
                     <div class="form-group">
                         <label for="inputCnaesCadastrados" class="font-weight-bold" style="color: #44546a;">2. CNAEs conforme cadastro do SICCAU:</label>
-                        <textarea class="form-control" id="inputCnaesCadastrados" rows="6" 
+                        <textarea class="form-control" id="inputCnaesCadastrados" rows="5" 
                         placeholder='Copie do SICCAU e cole aqui os CNAES da empresa, conforme o exemplo abaixo:
 
 7111-1/00	SERVIÇOS DE ARQUITETURA	Ver Item
@@ -110,6 +118,7 @@
                     </div>
                 </div>
             </div>
+
 
             <div class="row">
                 <div class="col d-flex justify-content-center my-2">
@@ -153,6 +162,8 @@
         <footer class="siccau-color text-light d-flex align-items-center justify-content-center py-2 mt-3">
             <p class="m-1">Coordenação Técnica do Exercício Profissional - CAU/SP</p>
         </footer>
+
+
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
         
