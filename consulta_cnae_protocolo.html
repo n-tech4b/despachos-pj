@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6PY2P4L60K"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6PY2P4L60K');
+        </script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <title>PJ - Conciliação de CNAEs</title>
+        
+        <style>
+            html, body { height: 100%; margin: 0; }
+            body { 
+                min-width: 576px; 
+                font-family: Arial, Helvetica, sans-serif; 
+                background-color: #f8f9fa; 
+                display: flex; 
+                flex-direction: column; 
+            }
+            .principal { flex: 1 0 auto; }
+            footer { flex-shrink: 0; }
+            .siccau-color { background-color: #14385d !important; }
+            
+            /* Visual dos Cards Limpos (Lista) */
+            .cnae-card {
+                border-radius: 4px;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+                transition: all 0.2s ease;
+            }
+            .cnae-card:hover { box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+            
+            /* Identidade visual exata por categoria */
+            .cnae-inserir { 
+                background-color: #f4fbf5; 
+                border: 1px solid #d9efde;
+                border-left: 4px solid #28a745; 
+            }
+            .cnae-excluir { 
+                background-color: #fdf3f4; 
+                /* border: 1px solid #f5c6cb; */
+                border-left: 4px solid #dc3545; 
+                color: #721c24; 
+            }
+            .cnae-manter { 
+                background-color: #f4fbfa; 
+                border: 1px solid #d1ecf1;
+                border-left: 4px solid #17a2b8; 
+            }
+            .cnae-outros { 
+                background-color: #fdfdfd; 
+                border: 1px solid #e2e3e5;
+                border-left: 4px solid #6c757d; 
+            }
+            .cnae-outros .text-truncate {
+                color: #6c757d !important; /* Deixa o texto cinza para ficar neutro */
+            }
+            
+            /* Tabela inferior */
+            #tabelaReferenciaContainer { display: none; }
+            #toggleTabelaReferenciaBtn { background-color: #6c757d; border-color: #6c757d; margin-bottom: 15px; }
+            #toggleTabelaReferenciaBtn:hover { background-color: #5a6268; border-color: #545b62; }
+        </style>
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark siccau-color">
+            <a href="#" style="margin-top: 8px; margin-bottom: 8px;">
+                <img src="cau.png" width="315" height="75" alt="Início" class="img-fluid" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<h3 class=\'text-white mb-0\'>CAU/SP</h3>');">
+            </a>
+            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                <ul class="navbar-nav mr-auto"></ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="consulta_cnae_antigo" target="_blank">Versão Manual (Sem API de busca)</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+            
+        <div class="container principal mt-4">
+            <h2 class="text-center mb-4" style="color: #44546a;">Conciliação de CNAEs por CNPJ</h2>
+            
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="inputCnpj" class="font-weight-bold" style="color: #44546a;">1. CNPJ:</label>
+                        <input type="text" class="form-control" id="inputCnpj" placeholder="Insira o CNPJ da empresa.">
+                        <small class="form-text text-muted font-italic">O sistema consultará os dados do CNPJ na Receita Federal do Brasil.</small>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <label for="inputCnaesCadastrados" class="font-weight-bold" style="color: #44546a;">2. CNAEs conforme cadastro do SICCAU:</label>
+                        <textarea class="form-control" id="inputCnaesCadastrados" rows="6" 
+                        placeholder='Copie do SICCAU e cole aqui os CNAES da empresa, conforme o exemplo abaixo:
+
+7111-1/00	SERVIÇOS DE ARQUITETURA	Ver Item
+4292-8/01	MONTAGEM DE ESTRUTURAS METÁLICAS	Ver Item
+4313-4/00	OBRAS DE TERRAPLENAGEM	Ver Item"'></textarea>
+                        <small class="form-text text-muted font-italic">A extração dos números no formato 0000-0/00 ocorrerá automaticamente para o cruzamento de dados.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col d-flex justify-content-center my-2">
+                    <button id="atualizarBtn" class="btn btn-outline-success mx-1 px-4 py-2"><i class="fa fa-refresh mr-2"></i>Cruzar Dados</button>
+                    <button id="deletarBtn" class="btn btn-outline-danger mx-1 px-4 py-2"><i class="fa fa-eraser mr-2"></i>Limpar Busca</button>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div id="outputCnaes" class="col-12">
+                    <!-- Resultados serão injetados aqui -->
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col text-center">
+                    <button class="btn btn-secondary" onclick="alternarTabela(this)">Mostrar Tabela de Referência de CNAEs</button>           
+                </div>
+            </div>
+
+
+            <div id="tabelaReferenciaContainer" class="mt-4">
+                <div class="bd-callout bd-callout-info" style="margin: 0 15px 30px 15px;"> 
+                    <h4 style="color: #44546a;" class="mt-2 mb-4">Tabela de Atividades Econômicas Relacionadas à Arquitetura e Urbanismo</h4>  
+                    <table class="table table-sm table-hover table-bordered bg-white">
+<thead class="thead-light">
+    <tr>
+        <th class="text-center" style="width: 80px;">Ordem</th>
+        <th class="text-center">CNAE</th>
+        <th>Atividade Econômica</th>
+    </tr>
+</thead>
+                        <tbody id="tabelaCorpo">
+                            <!-- Preenchida via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+        </div> 
+        
+        <footer class="siccau-color text-light d-flex align-items-center justify-content-center py-3 mt-4">
+            <p class="m-1 font-weight-bold">Coordenação Técnica do Exercício Profissional - CAU/SP</p>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        
+        <script>
+
+            function alternarTabela(botao) {
+                // Pega o contêiner da tabela
+                const tabela = document.getElementById("tabelaReferenciaContainer");
+                
+                // Verifica o estado atual e inverte (o display vazio "" significa que está pegando a regra original do CSS que é none)
+                if (tabela.style.display === "none" || tabela.style.display === "") {
+                    tabela.style.display = "block";
+                    botao.innerText = "Ocultar Tabela de Referência";
+                } else {
+                    tabela.style.display = "none";
+                    botao.innerText = "Mostrar Tabela de Referência de CNAEs";
+                }
+            }
+
+            $(document).ready(function(){
+                const cnaeList = [
+                    {cnae: "2330-3/01", atividade: "Fabricação de estruturas pré-moldadas de concreto armado, em série e sob encomenda"},
+                    {cnae: "2330-3/02", atividade: "Fabricação de artefatos de cimento para uso na construção"},
+                    {cnae: "2330-3/99", atividade: "Fabricação de outros artefatos e produtos de concreto, cimento, fibrocimento, gesso e materiais semelhantes"},
+                    {cnae: "2599-3/01", atividade: "Serviços de confecção de armações metálicas para a construção"},
+                    {cnae: "3299-0/03", atividade: "Fabricação de letras, letreiros e placas de qualquer material, exceto luminosos"},
+                    {cnae: "3299-0/04", atividade: "Fabricação de painéis e letreiros luminosos"},
+                    {cnae: "3329-5/01", atividade: "Serviços de montagem de móveis de qualquer material"},
+                    {cnae: "3811-4/00", atividade: "Coleta de resíduos não perigosos"},
+                    {cnae: "4120-1/00", atividade: "NÃO ENCONTRADA"},
+                    {cnae: "4120-4/00", atividade: "Construção de edifícios"},
+                    {cnae: "4211-1/01", atividade: "Construção de rodovias e ferrovias"},
+                    {cnae: "4211-1/02", atividade: "Pintura para sinalização em pistas rodoviárias e aeroportos"},
+                    {cnae: "4212-0/00", atividade: "Construção de obras-de-arte especiais"},//
+                    {cnae: "4213-8/00", atividade: "Obras de urbanização - ruas, praças e calçadas"},
+                    {cnae: "4221-9/03", atividade: "Manutenção de redes de distribuição de energia elétrica"},
+                    {cnae: "4222-7/01", atividade: "Construção de redes de abastecimento de água, coleta de esgoto e construções correlatas, exceto obras de irrigação"},
+                    {cnae: "4222-7/02", atividade: "Obras de irrigação"},
+                    {cnae: "4292-8/01", atividade: "Montagem de estruturas metálicas"},
+                    {cnae: "4299-5/01", atividade: "Construção de instalações esportivas e recreativas"},
+                    {cnae: "4299-5/99", atividade: "Obras de engenharia civil não especificadas anteriormente"},
+                    {cnae: "4311-8/01", atividade: "Demolição de edifícios e outras estruturas"},
+                    {cnae: "4311-8/02", atividade: "Preparação de canteiro e limpeza de terreno"},
+                    {cnae: "4312-6/00", atividade: "Perfurações e sondagens"}, // incluído 05/01/2026
+                    {cnae: "4313-4/00", atividade: "Obras de terraplenagem"},
+                    {cnae: "4319-3/00", atividade: "Serviços de preparação do terreno não especificados anteriormente"},
+                    {cnae: "4321-5/00", atividade: "Instalação e manutenção elétrica"},
+                    {cnae: "4322-3/01", atividade: "Instalações hidráulicas, sanitárias e de gás"},
+                    {cnae: "4322-3/02", atividade: "Instalação e manutenção de sistemas centrais de ar condicionado, de ventilação e refrigeração"},
+                    {cnae: "4322-3/03", atividade: "Instalações de sistema de prevenção contra incêndio"},
+                    {cnae: "4329-1/01", atividade: "Instalação de painéis publicitários"},
+                    {cnae: "4329-1/03", atividade: "Instalação, manutenção e reparação de elevadores, escadas e esteiras rolantes"},
+                    {cnae: "4329-1/04", atividade: "Montagem e instalação de sistemas e equipamentos de iluminação e sinalização em vias públicas, portos e aeroportos"},
+                    {cnae: "4329-1/05", atividade: "Tratamentos térmicos, acústicos ou de vibração"},
+                    {cnae: "4329-1/99", atividade: "Outras obras de instalações em construções não especificadas anteriormente"},
+                    {cnae: "4330-4/01", atividade: "Impermeabilização em obras de engenharia civil"},
+                    {cnae: "4330-4/02", atividade: "Instalação de portas, janelas, tetos, divisórias e armários embutidos de qualquer material"},
+                    {cnae: "4330-4/03", atividade: "Obras de acabamento em gesso e estuque"},
+                    {cnae: "4330-4/04", atividade: "Serviços de pintura de edifícios em geral"},
+                    {cnae: "4330-4/05", atividade: "Aplicação de revestimentos e de resinas em interiores e exteriores"},
+                    {cnae: "4330-4/99", atividade: "Outras obras de acabamento da construção"},
+                    {cnae: "4391-6/00", atividade: "Obras de fundações"},
+                    {cnae: "4399-1/01", atividade: "Administração de obras"},
+                    {cnae: "4399-1/02", atividade: "Montagem e desmontagem de andaimes e outras estruturas temporárias"},
+                    {cnae: "4399-1/03", atividade: "Obras de alvenaria"},
+                    {cnae: "4399-1/04", atividade: "Serviços de operação e fornecimento de equipamentos para transporte e elevação de cargas e pessoas para uso em obras"},
+                    {cnae: "4399-1/05", atividade: "Perfuração e construção de poços de água"},
+                    {cnae: "4399-1/99", atividade: "Serviços especializados para construção não especificados anteriormente"},
+                    {cnae: "6810-2/03", atividade: "Loteamento de imóveis próprios"},
+                    {cnae: "6821-8/01", atividade: "Corretagem na compra e venda e avaliação de imóveis"},
+                    {cnae: "7111-1/00", atividade: "Serviços de arquitetura"},
+                    {cnae: "7112-0/00", atividade: "Serviços de engenharia"},
+                    {cnae: "7119-7/01", atividade: "Serviços de cartografia, topografia e geodésia"},
+                    {cnae: "7119-7/02", atividade: "Atividades de estudos geológicos"},
+                    {cnae: "7119-7/03", atividade: "Serviços de desenho técnico relacionados à arquitetura e engenharia"},
+                    {cnae: "7119-7/04", atividade: "Serviços de perícia técnica relacionados à segurança do trabalho"},
+                    {cnae: "7119-7/99", atividade: "Atividades técnicas relacionadas à engenharia e arquitetura não especificadas anteriormente"},
+                    {cnae: "7210-0/00", atividade: "Pesquisa e desenvolvimento experimental em ciências físicas e naturais"},
+                    {cnae: "7319-0/01", atividade: "Criação de estandes para feiras e exposições"},
+                    {cnae: "7410-2/02", atividade: "Design de Interiores"},
+                    {cnae: "7410-2/03", atividade: "Design de produtos"},
+                    {cnae: "7410-2/99", atividade: "Atividades de design não especificadas anteriormente"},
+                    {cnae: "7490-1/99", atividade: "Outras atividades profissionais, científicas e técnicas não especificadas anteriormente"},
+                    {cnae: "8130-3/00", atividade: "Atividades paisagísticas"},
+                    {cnae: "8230-0/01", atividade: "Serviços de organização de feiras, congressos, exposições e festas"},
+                    {cnae: "8531-7/00", atividade: "Educação Superior-Graduação"},
+                    {cnae: "8532-5/00", atividade: "Educação Superior- Graduação e Pós graduação"},
+                    {cnae: "8533-3/00", atividade: "Educação Superior- Pós graduação e extensão"},
+                    {cnae: "8541-4/00", atividade: "Educação profissional de nível técnico"},
+                    {cnae: "8542-2/00", atividade: "Educação profissional de nível tecnológico"},
+                    {cnae: "8599-6/04", atividade: "Treinamento em desenvolvimento profissional e gerencial"},
+                    {cnae: "8599-6/99", atividade: "Outras atividades de ensino não especificadas anteriormente"},
+                    {cnae: "9001-9/06", atividade: "Atividades de sonorização e de iluminação"},
+                    {cnae: "9102-3/02", atividade: "Restauração e conservação de lugares e prédios históricos"},
+                    {cnae: "9311-5/00", atividade: "Gestão de instalações de esportes"},
+                    {cnae: "9529-1/05", atividade: "Reparação de artigos do mobiliário"}
+                ];
+
+                const MENSAGEM_NAO_ENCONTRADO = "*** Atividade não listada para Arquitetura e Urbanismo ***";
+
+const $tabelaCorpo = $("#tabelaCorpo");
+// Adicionamos o 'index' aqui dentro dos parênteses
+cnaeList.forEach((item, index) => {
+    // Calculamos a ordem (index + 1, porque o index começa em 0)
+    let ordem = index + 1;
+    
+    // Adicionamos a nova <td> com a ordem na frente
+    $tabelaCorpo.append(`
+        <tr>
+            <td class="text-center">${ordem}</td>
+            <td class="text-center font-weight-bold">${item.cnae}</td>
+            <td>${item.atividade}</td>
+        </tr>
+    `);
+});
+
+                function formatCnae(cnaeStr) {
+                    if (!cnaeStr || cnaeStr.length < 5 || cnaeStr.length > 7) return cnaeStr; 
+                    const padded = String(cnaeStr).padStart(7, '0');
+                    return `${padded.substr(0, 4)}-${padded.charAt(4)}/${padded.substr(5)}`;
+                }
+
+                function findAtividade(cnae) {
+                    const match = cnaeList.find(i => i.cnae === cnae);
+                    return match ? match.atividade : MENSAGEM_NAO_ENCONTRADO;
+                }
+
+
+
+                $("#atualizarBtn").click(async function(){ 
+                    const cnpj = $("#inputCnpj").val().replace(/\D/g,''); 
+                    const textoCadastrados = $("#inputCnaesCadastrados").val();
+                    const $output = $("#outputCnaes");
+
+                    $output.html('<div class="text-center text-info my-4"><i class="fa fa-spinner fa-spin fa-2x"></i><p>Consultando Receita Federal e Cruzando Dados...</p></div>'); 
+
+                    if (cnpj.length !== 14) {
+                        $output.html('<div class="alert alert-danger"><i class="fa fa-exclamation-triangle mr-2"></i>CNPJ inválido. Insira os 14 dígitos numéricos.</div>');
+                        return;
+                    }
+
+                    const regexCnae = /\d{4}-\d\/\d{2}/g;
+                    const cnaesTextoArray = textoCadastrados.match(regexCnae) || [];
+                    const cnaesNoSistema = new Set(cnaesTextoArray); 
+
+                    try {
+                        const response = await fetch(`https://minhareceita.org/cnpj/${cnpj}`);
+                        if (!response.ok) throw new Error(`Erro na API (${response.status})`);
+                        
+                        const data = await response.json();
+                        
+                        let cnaesReceita = [];
+                        if (data.cnae_fiscal) {
+                            cnaesReceita.push({ codigo: formatCnae(data.cnae_fiscal), descricao: data.cnae_fiscal_descricao, tipo: 'Principal' });
+                        }
+                        if (data.cnaes_secundarios) {
+                            data.cnaes_secundarios.forEach(sec => {
+                                cnaesReceita.push({ codigo: formatCnae(sec.codigo), descricao: sec.descricao, tipo: 'Secundário' });
+                            });
+                        }
+
+                        $output.empty();
+
+                        if (cnaesReceita.length === 0) {
+                            $output.html('<div class="alert alert-warning"><i class="fa fa-info-circle mr-2"></i>Nenhum CNAE localizado para o CNPJ informado na Receita Federal.</div>');
+                            return;
+                        }
+
+                        let htmlInserir = [];
+                        let htmlManter = [];
+                        let htmlExcluir = [];
+                        let htmlOutros = []; // Quarta lista restaurada
+
+                        cnaesReceita.forEach(cnaeRec => {
+                            const descLocal = findAtividade(cnaeRec.codigo);
+                            const isArquitetura = descLocal !== MENSAGEM_NAO_ENCONTRADO;
+                            
+                            const badgeTipo = cnaeRec.tipo === 'Principal' 
+                                ? '<span class="badge badge-primary">Principal</span>' 
+                                : '<span class="badge badge-secondary" style="background-color: #6c757d;">Secundário</span>';
+                            
+                            if (isArquitetura) {
+                                // CNAE pertence à lista do CAU
+                                if (cnaesNoSistema.has(cnaeRec.codigo)) {
+                                    // Já está no sistema
+                                    let badgeManter = badgeTipo + ' <span class="badge badge-info ml-1" style="background-color: #17a2b8;"><i class="fa fa-check mr-1"></i>Já Cadastrado</span>';
+                                    htmlManter.push(gerarCard(cnaeRec.codigo, descLocal, badgeManter, 'cnae-manter', false));
+                                } else {
+                                    // Inserir no sistema (Com botão de copiar)
+                                    htmlInserir.push(gerarCard(cnaeRec.codigo, descLocal, badgeTipo, 'cnae-inserir', true));
+                                }
+                            } else {
+                                // CNAE NÃO pertence à lista do CAU (Informação extra cinza)
+                                let badgesExtras = badgeTipo;
+                                if (cnaesNoSistema.has(cnaeRec.codigo)) {
+                                    badgesExtras += ' <span class="badge badge-warning ml-1" style="color: #212529;"><i class="fa fa-check mr-1"></i>No Sistema</span>';
+                                }
+                                htmlOutros.push(gerarCard(cnaeRec.codigo, cnaeRec.descricao, badgesExtras, 'cnae-outros', false));
+                            }
+                        });
+
+                        const codigosReceitaSet = new Set(cnaesReceita.map(c => c.codigo));
+                        cnaesNoSistema.forEach(cnaeSis => {
+                            if (!codigosReceitaSet.has(cnaeSis)) {
+                                const descLocal = findAtividade(cnaeSis);
+                                const descExibir = "CNAE não identificado (não consta no CNPJ da empresa)";
+                                // const descExibir = descLocal !== MENSAGEM_NAO_ENCONTRADO ? descLocal : "CNAE não identificado (não consta no CNPJ da empresa)";
+
+                                htmlExcluir.push(gerarCard(cnaeSis, descExibir, '<span class="badge badge-danger">Remover do Cadastro</span>', 'cnae-excluir', false));
+                                // htmlExcluir.push(gerarCard(cnaeSis, descExibir, '<span class="badge badge-danger"><i class="fa fa-times mr-1"></i>Remover do Cadastro</span>', 'cnae-excluir', false));
+
+                            }
+                        });
+
+                        // RENDERIZAÇÃO NA TELA
+                        if(htmlInserir.length > 0) {
+                            $output.append('<h5 class="text-success mt-3 font-weight-bold" style="color: #28a745 !important;"><i class="fa fa-plus-circle mr-2"></i>CNAEs a Inserir no Cadastro</h5><hr class="mt-1 mb-3">');
+                            htmlInserir.forEach(html => $output.append(html));
+                        }
+
+                        if(htmlExcluir.length > 0) {
+                            $output.append('<h5 class="text-danger mt-4 font-weight-bold" style="color: #dc3545 !important;"><i class="fa fa-trash mr-2"></i>CNAEs a Excluir do Cadastro (Não constam na RFB)</h5><hr class="mt-1 mb-3">');
+                            htmlExcluir.forEach(html => $output.append(html));
+                        }
+
+                        if(htmlManter.length > 0) {
+                            $output.append('<h5 class="text-info mt-4 font-weight-bold" style="color: #17a2b8 !important;"><i class="fa fa-check-square-o mr-2"></i>CNAEs Já Inseridos e Regulares</h5><hr class="mt-1 mb-3">');
+                            htmlManter.forEach(html => $output.append(html));
+                        }
+
+                        // Renderiza a quarta lista neutra no final
+                        if(htmlOutros.length > 0) {
+                            $output.append('<h5 class="text-secondary mt-4 font-weight-bold"><i class="fa fa-info-circle mr-2"></i>Outras Atividades na Receita (Não relacionadas ao CAU)</h5><hr class="mt-1 mb-3">');
+                            htmlOutros.forEach(html => $output.append(html));
+                        }
+
+                    } catch (error) {
+                        $output.html('<div class="alert alert-danger"><i class="fa fa-wifi mr-2"></i>Falha de conexão com a API da Receita Federal. Tentar novamente.</div>');
+                    }
+                }); 
+
+                function gerarCard(codigo, descricao, badges, classeCss, mostrarBotaoCopiar) {
+                    let btnHTML = mostrarBotaoCopiar 
+                        ? `<button class="btn btn-sm btn-outline-success btnCopiar mr-3 py-1 flex-shrink-0" style="width: 75px;" type="button" data-cnae="${codigo}">Copiar</button>`
+                        : '';
+
+                    return `
+                        <div class="d-flex align-items-center mb-2 py-2 px-3 cnae-card ${classeCss}">
+                            ${btnHTML}
+                            <div class="font-weight-bold mr-3 flex-shrink-0" style="min-width: 85px; color: #212529;">${codigo}</div>
+                            <div class="flex-grow-1 text-truncate mr-3" title="${descricao}" style="min-width: 0; color: #495057;">${descricao}</div>
+                            <div class="d-flex align-items-center flex-shrink-0">
+                                ${badges}
+                            </div>
+                        </div>`;
+                }
+
+                $(document).on("click", ".btnCopiar", async function(){
+                    const cnaeValue = $(this).data("cnae");
+                    const $botao = $(this); 
+
+                    try {
+                        await navigator.clipboard.writeText(cnaeValue);
+                        $botao.text('Copiado!').removeClass('btn-outline-success').addClass('btn-success'); 
+                    } catch (err) {
+                        alert('Não foi possível realizar a cópia. Verificar as permissões do navegador.');
+                    }
+                });
+
+                $("#deletarBtn").click(function(){
+                    $("#outputCnaes").empty(); 
+                    $("#inputCnpj, #inputCnaesCadastrados").val(""); 
+                });
+            }); 
+        </script>
+    </body>
+</html>
