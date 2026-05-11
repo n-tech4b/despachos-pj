@@ -2,7 +2,17 @@
 <html lang="pt">
 
     <head>
-        <meta charset="UTF-8">
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6PY2P4L60K"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6PY2P4L60K');
+        </script>
+
+        <meta name="robots" content="noindex, nofollow">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="robots" content="noindex, nofollow">
         <title>Consulta CNAE</title>
@@ -35,6 +45,9 @@
                 font-weight: bold; /* Texto em negrito */
                 /* transition: background-color 0.3s, color 0.3s;  Transição suave */
             }
+
+
+            .siccau-color { background-color: #14385d !important; }
     
         </style>
 
@@ -42,11 +55,50 @@
 
     </head>
 
+    
+
     <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark siccau-color">
+            <a href="#" style="margin-top: 8px; margin-bottom: 8px;" class="mr-4" ><img src="cau.png" width="315" height="75" alt="Início" class="img-fluid"></a>
+
+            <!-- collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="consulta_cnae">Consulta para Solicitação de Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="consulta_cnae_protocolo">Consulta para Protocolo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="consulta_cnae_antigo">Versão Manual (Sem API de busca)</a>
+                    </li>
+                </ul>
+
+
+                <!-- <ul class="navbar-nav">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="consulta_cnae_antigo" target="_blank">Versão Manual (Sem API de busca)</a>
+                    </li>
+                </ul> -->
+            </div>
+        </nav>
+
+
         <div class="container">
 
+
                     
-            <h2 class="text-center my-4" style="text-align: center; color: gray">Consulta CNAEs</h2>
+            <h2 class="text-center my-4" style="text-align: center; color: gray">Consulta CNAEs (Versão Antiga)</h2>
             <div class="row">
                 <div class="col">
                     
