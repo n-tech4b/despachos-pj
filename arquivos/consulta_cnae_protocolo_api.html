@@ -381,7 +381,7 @@ cnaeList.forEach((item, index) => {
                         cnaesNoSistema.forEach(cnaeSis => {
                             if (!codigosReceitaSet.has(cnaeSis)) {
                                 const descLocal = findAtividade(cnaeSis);
-                                const descExibir = "CNAE não identificado (não consta no CNPJ da empresa)";
+                                const descExibir = "CNAE não identificado (não consta na tabela de referência de atividades de Arquitetura e Urbanismo)";
                                 // const descExibir = descLocal !== MENSAGEM_NAO_ENCONTRADO ? descLocal : "CNAE não identificado (não consta no CNPJ da empresa)";
 
                                 htmlExcluir.push(gerarCard(cnaeSis, descExibir, '<span class="badge badge-danger">Remover do Cadastro</span>', 'cnae-excluir', false));
@@ -397,7 +397,7 @@ cnaeList.forEach((item, index) => {
                         }
 
                         if(htmlExcluir.length > 0) {
-                            $output.append('<h5 class="text-danger mt-4 font-weight-bold" style="color: #dc3545 !important;"><i class="fa fa-trash mr-2"></i>CNAEs a Excluir do Cadastro (Não constam na RFB)</h5><hr class="mt-1 mb-3">');
+                            $output.append('<h5 class="text-danger mt-4 font-weight-bold" style="color: #dc3545 !important;"><i class="fa fa-trash mr-2"></i>CNAEs a Excluir do Cadastro</h5><hr class="mt-1 mb-3">');
                             htmlExcluir.forEach(html => $output.append(html));
                         }
 
